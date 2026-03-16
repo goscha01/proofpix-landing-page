@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { AlertCircle, ArrowRight, Check, CheckCircle2, Star } from "lucide-react";
+import { AlertCircle, ArrowRight, Check, CheckCircle2, Info, Star } from "lucide-react";
 
 const BEFORE_AFTER_PAIRS = 6;
 // Use .jpg for before/after (lighter than PNG) so the page loads faster when hosted
@@ -41,6 +41,8 @@ function App() {
   // Mobile camera chaos: 12 steps (6 pairs × 2 phases). Even = before, odd = after.
   // After each "after" phase, the corresponding bullet turns green.
   const [mobileStep, setMobileStep] = useState(0);
+  const [activeRowLabel, setActiveRowLabel] = useState(null);
+  const [activeTierName, setActiveTierName] = useState(null);
   const mobilePairIndex = Math.floor(mobileStep / 2); // which pair (0-5)
   const mobileShowingAfter = mobileStep % 2 === 1; // false = before, true = after
   const mobileGreenCount = Math.floor((mobileStep + 1) / 2); // how many bullets are green (0-6)
@@ -916,6 +918,162 @@ function App() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* ROI Numbers Section */}
+        <section className="mx-auto w-full overflow-x-hidden py-16 px-4 sm:px-6">
+          <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="mb-2 text-center text-[28px] leading-[36px] tracking-tight text-black lg:text-[44px] lg:leading-[62px]">
+            The Real Value of ProofPix
+          </h2>
+          <p style={{ fontWeight: "300", letterSpacing: "-0.201242px" }} className="mb-10 text-center text-[14px] leading-[22px] text-[#555] lg:text-[18px] lg:leading-[28px] max-w-[700px] mx-auto">
+            Clear before-and-after proof saves time, prevents disputes, and turns job photos into marketing content.
+          </p>
+
+          {(() => {
+            const commonNote = "Assumes a 5% complaint rate, $100 avg complaint cost, and ~10 min to manually create before/after documentation per job.";
+            const tiers = [
+              { name: "Starter", price: "$0", tooltip: "Solo professional, 1 job/day (22 jobs/month). ~10% of jobs produce shareable photos worth ~$5 each without branding." },
+              { name: "Pro", price: "$8.99", tooltip: "Solo professional, 1 job/day (22 jobs/month). Branded photos generate ~$10 per marketing image, ~10% of jobs produce usable content." },
+              { name: "Business", price: "$24.99", tooltip: "5-person team, 1.5 jobs/day per worker (~165 jobs/month). ~10% of jobs produce marketing-ready photos worth ~$10 each." },
+              { name: "Enterprise", price: "$69.99", tooltip: "15-person team, 3 jobs/day per worker (~990 jobs/month). ~5% of jobs produce marketing content, ~$10 value per image." },
+            ];
+            const rows = [
+              { icon: "/icon-time.svg", label: "Time saved", values: ["5.4 hrs", "6.4 hrs", "43 hrs", "238 hrs"], color: "#2563EB", tooltip: "Monthly hours saved vs. manually creating before/after documentation." },
+              { icon: "/icon-complaints.svg", label: "Complaints reduced", values: ["~50%", "~50%", "~50%", "~50%"], color: "#009379", tooltip: "Estimated reduction in customer complaints when visual proof is provided." },
+              { icon: "/icon-marketing.svg", label: "Dispute costs prevented", values: ["$50", "$50", "$400", "$2,500"], color: "#D97706", tooltip: "Monthly savings from avoided disputes, based on complaint rate and average resolution cost." },
+              { icon: "/icon-disputes.svg", label: "Marketing value", values: ["$10", "$75", "$160", "$500"], color: "#7C3AED", tooltip: "Estimated monthly revenue from using job photos as marketing content." },
+              { icon: "/icon-price.svg", label: "Plan price", values: ["$0", "$8.99", "$24.99", "$69.99"], color: "#111", isPrice: true },
+            ];
+            return (
+              <>
+                {/* Mobile: transposed table — tiers as rows, metrics as columns */}
+                <div className="lg:hidden pb-2">
+                  <table className="w-full" style={{ borderSpacing: "0" }}>
+                    <thead>
+                      <tr>
+                        <th style={{ width: "90px" }}></th>
+                        {rows.map((row) => (
+                          <th key={row.label} className="text-center px-1 pb-3">
+                            {row.icon ? (
+                              <div className="relative flex flex-col items-center">
+                                <button
+                                  onClick={() => setActiveRowLabel(activeRowLabel === row.label ? null : row.label)}
+                                  className="flex items-center justify-center"
+                                  style={{ width: "36px", height: "36px", borderRadius: "10px", background: `${row.color}14` }}
+                                >
+                                  <img src={row.icon} alt={row.label} style={{ width: "20px", height: "20px", filter: "brightness(0)" }} />
+                                </button>
+                                {activeRowLabel === row.label && (
+                                  <div className="absolute top-[40px] z-50 whitespace-nowrap px-3 py-1.5 bg-[#2D2D2D] text-white text-[12px] rounded-lg shadow-xl" style={{ fontWeight: "500" }}>
+                                    {row.label}
+                                  </div>
+                                )}
+                              </div>
+                            ) : (
+                              <span style={{ fontWeight: "600", fontSize: "11px" }} className="text-[#333]">{row.label}</span>
+                            )}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {tiers.map((t, ti) => (
+                        <tr key={t.name}>
+                          <td className="py-3 pr-2" style={{ borderBottom: ti < tiers.length - 1 ? "1px solid rgba(0,0,0,0.08)" : "none" }}>
+                            <div className="relative">
+                              <button
+                                onClick={() => setActiveTierName(activeTierName === t.name ? null : t.name)}
+                                className="flex items-center"
+                                style={{ gap: "2px" }}
+                              >
+                                <span style={{ fontWeight: "600", fontSize: "14px", lineHeight: "1.3", textDecoration: "underline", textDecorationStyle: "dotted", textUnderlineOffset: "3px", textDecorationColor: "#ccc" }} className="text-black">{t.name}</span>
+                              </button>
+                              {activeTierName === t.name && (
+                                <div className="absolute left-0 top-[28px] z-50 w-[220px] p-3 bg-[#2D2D2D] text-white text-[12px] leading-[1.5] rounded-xl shadow-xl text-left" style={{ fontWeight: "350" }}>
+                                  <span className="block mb-1 text-[10px] uppercase tracking-wider text-[#F2C31B]" style={{ fontWeight: "600" }}>Methodology</span>
+                                  {t.tooltip}
+                                </div>
+                              )}
+                            </div>
+                          </td>
+                          {rows.map((row) => (
+                            <td key={row.label} className="text-center py-3 px-1" style={{ borderBottom: ti < tiers.length - 1 ? "1px solid rgba(0,0,0,0.08)" : "none", fontWeight: "700", fontSize: row.isPrice ? "16px" : "14px", color: row.isPrice ? "#009379" : "#2D2D2D" }}>
+                              {row.values[ti]}{row.isPrice && <span style={{ fontWeight: "400", fontSize: "10px", color: "#888" }}>/mo</span>}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p className="text-center mt-4 px-2">
+                    <span style={{ fontWeight: "300", fontSize: "11px", lineHeight: "1.4", color: "#888" }}>{commonNote}</span>
+                  </p>
+                </div>
+
+                {/* Desktop: transposed table — tiers as rows, metrics as columns */}
+                <div className="mx-auto hidden lg:block" style={{ maxWidth: "1270px" }}>
+                  <div style={{ borderRadius: "38px", border: "1px solid rgba(0,0,0,0.5)" }}>
+                    <table className="w-full" style={{ borderSpacing: "0" }}>
+                      <thead>
+                        <tr>
+                          <th style={{ width: "220px", padding: "28px 32px", textAlign: "left", borderBottom: "1px solid rgba(0,0,0,0.1)" }}></th>
+                          {rows.map((row, ri) => (
+                            <th key={row.label} className="text-center" style={{ padding: "28px 16px", borderBottom: "1px solid rgba(0,0,0,0.1)", borderLeft: "1px solid rgba(0,0,0,0.1)" }}>
+                              <div className="flex flex-col items-center" style={{ gap: "8px" }}>
+                                {row.icon && (
+                                  <div className="flex items-center justify-center" style={{ width: "44px", height: "44px", borderRadius: "12px", background: `${row.color}14` }}>
+                                    <img src={row.icon} alt="" style={{ width: "24px", height: "24px", filter: "brightness(0)" }} />
+                                  </div>
+                                )}
+                                <div className="inline-flex items-center" style={{ gap: "4px" }}>
+                                  <span style={{ fontWeight: "600", fontSize: "16px", lineHeight: "1.3", letterSpacing: "-0.201242px" }} className="text-black">{row.label}</span>
+                                  {row.tooltip && (
+                                    <div className="group relative inline-flex">
+                                      <Info className="h-3.5 w-3.5 text-[#bbb] cursor-pointer" />
+                                      <div className="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 absolute top-6 z-50 w-[260px] p-3 bg-[#2D2D2D] text-white text-[13px] leading-[1.5] rounded-xl shadow-xl text-left" style={{ fontWeight: "350", ...(ri >= 3 ? { right: 0 } : { left: "50%", transform: "translateX(-50%)" }) }}>
+                                        <span className="block mb-1 text-[11px] uppercase tracking-wider text-[#F2C31B]" style={{ fontWeight: "600" }}>How we calculated this</span>
+                                        {row.tooltip}
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {tiers.map((t, ti) => (
+                          <tr key={t.name} className="hover:bg-[rgba(242,195,27,0.04)] transition-colors">
+                            <td style={{ padding: "24px 32px", borderBottom: ti < tiers.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none" }}>
+                              <div className="flex items-center" style={{ gap: "8px" }}>
+                                <span style={{ fontWeight: "600", fontSize: "22px", lineHeight: "1.4", letterSpacing: "-0.201242px" }} className="text-black">{t.name}</span>
+                                <div className="group relative inline-flex">
+                                  <Info className="h-4 w-4 text-[#bbb] cursor-pointer" />
+                                  <div className="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 absolute left-6 top-0 z-50 w-[280px] p-4 bg-[#2D2D2D] text-white text-[13px] leading-[1.6] rounded-xl shadow-xl text-left" style={{ fontWeight: "350" }}>
+                                    <span className="block mb-1 text-[11px] uppercase tracking-wider text-[#F2C31B]" style={{ fontWeight: "600" }}>Methodology</span>
+                                    {t.tooltip}
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                            {rows.map((row) => (
+                              <td key={row.label} className="text-center" style={{ padding: "24px 16px", borderBottom: ti < tiers.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none", borderLeft: "1px solid rgba(0,0,0,0.1)", fontWeight: "700", fontSize: row.isPrice ? "26px" : "22px", letterSpacing: "-0.02em", color: row.isPrice ? "#009379" : "#2D2D2D" }}>
+                                {row.values[ti]}{row.isPrice && <span style={{ fontWeight: "400", fontSize: "16px", color: "#888" }}> /mo</span>}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-center mt-5">
+                    <span style={{ fontWeight: "300", fontSize: "14px", lineHeight: "1.4", color: "#888" }}>{commonNote}</span>
+                  </p>
+                </div>
+              </>
+            );
+          })()}
         </section>
 
         {/* CTA Banner — Mobile */}
