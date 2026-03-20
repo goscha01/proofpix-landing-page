@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics, logEvent } from "firebase/analytics";
+import { getRemoteConfig, fetchAndActivate, getValue } from "firebase/remote-config";
 
 const firebaseConfig = {
   apiKey: "AIzaSyADlAgGiheGYK4M3-NZe4Juv312h7J2UEM",
@@ -13,5 +14,11 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const remoteConfig = getRemoteConfig(app);
 
-export { app, analytics };
+// Default: show variant A. Fetch fresh config every 60s in dev, 12h in prod.
+remoteConfig.defaultConfig = { landing_variant: "A" };
+remoteConfig.settings.minimumFetchIntervalMillis =
+  process.env.NODE_ENV === "development" ? 60000 : 43200000;
+
+export { app, analytics, remoteConfig, logEvent, fetchAndActivate, getValue };
