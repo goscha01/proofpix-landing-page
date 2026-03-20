@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
+import AppV2 from "./AppV2";
 import reportWebVitals from "./reportWebVitals";
 import "./firebase";
 
@@ -10,7 +11,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Routes>
+        <Route path="/v2" element={<AppV2 />} />
+        <Route path="*" element={<App />} />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
