@@ -261,12 +261,19 @@ function AppV2() {
           </div>
         </section>
 
-        {/* From Camera Chaos section — centered on mobile and desktop */}
+        {/* Your Work Photos section — replaces Camera Chaos heading */}
         <section id="camera-chaos" className="pt-8 sm:pt-20 px-4 sm:px-6">
-          <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="mb-8 text-center text-[28px] leading-[36px] tracking-tight text-black sm:mb-12 lg:text-[44px] lg:leading-[62px]">
-            {/* [V2] Section title — pain-focused */}
-            Why job photos fail to prove your work
-          </h2>
+          <div className="flex flex-col items-center" style={{ gap: "16px", marginBottom: "32px" }}>
+            <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="text-center text-[28px] leading-[36px] tracking-tight text-black lg:text-[44px] lg:leading-[62px]">
+              From Camera Chaos to Clear Proof
+            </h2>
+            <p style={{ fontWeight: "300", fontSize: "27px", lineHeight: "130%", maxWidth: "1024px" }} className="hidden text-center text-[#2D2D2D] sm:block">
+              Job photos buried in your camera roll don&apos;t prove anything. ProofPix pairs every before with its after, matches the angle automatically, and delivers branded documentation you can share in seconds.
+            </p>
+            <p style={{ fontWeight: "300", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="text-center text-[#2D2D2D] sm:hidden">
+              Job photos buried in your camera roll don&apos;t prove anything. ProofPix pairs every before with its after, matches angles automatically, and delivers branded proof you can share in seconds.
+            </p>
+          </div>
           {/* Mobile/Tablet layout — single frame, dim within pairs, swipe between pairs */}
           <div className="mx-auto flex flex-col items-center lg:hidden" style={{ maxWidth: "420px", rowGap: "20px" }}>
             {/* Image frame — same style as desktop */}
@@ -792,8 +799,8 @@ function AppV2() {
             {[
               { value: "5000+", label: "Photos Created" },
               { value: "400+", label: "Projects created" },
-              { value: "100k+", label: "New users\njoined ProofPix" },
-              { value: "700k+", label: "Teams used\nProofPix" },
+              { value: "2,400+", label: "Service pros\nusing ProofPix" },
+              { value: "50+", label: "Industries\nserved" },
             ].map((stat) => (
               <div
                 key={stat.value}
@@ -824,7 +831,7 @@ function AppV2() {
           <div className="flex flex-col items-center" style={{ gap: "18.71px", marginBottom: "68px" }}>
             <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="text-center text-[28px] leading-[36px] tracking-tight text-black lg:text-[44px] lg:leading-[62px]">
               <span className="sm:hidden">Pricing</span>
-              <span className="hidden sm:inline">Pricing — Short + Scannable</span>
+              <span className="hidden sm:inline">Simple, Transparent Pricing</span>
             </h2>
             {/* [V2] Pricing reinforcement — dispute cost framing */}
             <div style={{ backgroundColor: "rgba(255, 255, 255, 0.4)", border: "1px solid rgba(0, 0, 0, 0.24)" }} className="rounded-full px-5 py-[10px] text-center">
@@ -1101,6 +1108,56 @@ function AppV2() {
           })()}
         </section>
 
+        {/* FAQ Section */}
+        <section id="faq" className="mx-auto w-full py-16 px-4 sm:px-6">
+          <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="mb-10 text-center text-[28px] leading-[36px] tracking-tight text-black lg:text-[44px] lg:leading-[62px]">
+            Frequently Asked Questions
+          </h2>
+          <div className="mx-auto flex flex-col" style={{ maxWidth: "800px", gap: "24px" }}>
+            {[
+              {
+                q: "What is ProofPix?",
+                a: "ProofPix is a before-and-after photo documentation app built specifically for service professionals. It helps cleaners, contractors, property inspectors, Airbnb hosts, landscapers, and field teams capture, organize, and share professional before-and-after photos without cluttering their personal camera roll. Unlike your regular camera app, ProofPix keeps work photos in dedicated projects, matches angles with ghost overlay, and lets you add custom labels and watermarks for a professional look.",
+              },
+              {
+                q: "Is ProofPix free?",
+                a: "Yes, ProofPix offers a free Starter plan that includes before/after photo capture, angle matching with photo overlay, flexible layouts (vertical, square, horizontal), and the ability to share individual photos. For advanced features like bulk sharing, cloud uploads, custom labels and watermarks, and unlimited projects, the Pro plan is $8.99 per month. Team plans start at $24.99 per month. All paid plans include a 30-day free trial.",
+              },
+              {
+                q: "How does Ghost Mode work?",
+                a: "Ghost Mode is one of ProofPix's most popular features. When you're taking an 'after' photo, Ghost Mode overlays a semi-transparent version of your original 'before' shot on the camera viewfinder. This lets you match the exact same angle, distance, and framing so your before-and-after comparisons look consistent and professional. It's especially useful for renovation projects, cleaning jobs, and property inspections where angle consistency matters.",
+              },
+              {
+                q: "Does ProofPix work on iPhone and Android?",
+                a: "Yes, ProofPix is available on both iOS (iPhone and iPad) and Android devices. You can download it from the Apple App Store or Google Play Store. Your account syncs across devices, so you can capture photos on one device and access them from another.",
+              },
+              {
+                q: "Can I share photos with clients?",
+                a: "Absolutely. ProofPix makes it easy to share professional before-and-after photos with clients. You can share individual photos or entire projects. With the Pro plan and above, you get bulk sharing capabilities and can upload directly to Google Drive or Dropbox. Photos can include your custom labels, colors, and watermark for a branded, professional presentation.",
+              },
+              {
+                q: "How is ProofPix different from my camera app?",
+                a: "Your phone's built-in camera app mixes work photos with personal ones, has no project structure, doesn't help you match angles, and offers no way to add professional labels or watermarks. ProofPix solves all of these problems: it keeps work photos in dedicated projects, uses Ghost Mode for angle matching, supports bulk before/after capture so photos never get out of order, and lets you customize layouts with your branding. It's purpose-built for the way service professionals actually work.",
+              },
+            ].map((item, i) => (
+              <details key={i} className="group border border-black/10 rounded-2xl overflow-hidden">
+                <summary
+                  className="flex items-center justify-between cursor-pointer px-6 py-5 select-none"
+                  style={{ fontWeight: "600", fontSize: "18px", lineHeight: "24px", letterSpacing: "-0.201242px" }}
+                >
+                  <span className="text-black pr-4">{item.q}</span>
+                  <span className="text-black/40 group-open:rotate-45 transition-transform text-2xl flex-shrink-0">+</span>
+                </summary>
+                <div className="px-6 pb-5">
+                  <p style={{ fontWeight: "300", fontSize: "16px", lineHeight: "26px", letterSpacing: "-0.201242px" }} className="text-[#333]">
+                    {item.a}
+                  </p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
         {/* CTA Banner — Mobile */}
         <section className="lg:hidden flex flex-col items-center bg-white" style={{ padding: "31.44px" }}>
           <div className="relative w-full overflow-hidden flex flex-col items-center" style={{ height: "469.94px", background: "#F2C31B", borderRadius: "20.96px" }}>
@@ -1221,14 +1278,14 @@ function AppV2() {
                 <div style={{ padding: "12px 0" }}>
                   <span style={{ fontWeight: "700", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9" }}>Legal</span>
                 </div>
-                <a href="#privacy" style={{ padding: "12px 0", fontWeight: "400", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9", display: "block" }}>Privacy Policy</a>
-                <a href="#terms" style={{ padding: "12px 0", fontWeight: "400", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9", display: "block" }}>Terms &amp; Conditions</a>
+                <a href="https://www.geos-ai.com/privacy.html" target="_blank" rel="noopener noreferrer" style={{ padding: "12px 0", fontWeight: "400", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9", display: "block" }}>Privacy Policy</a>
+                <a href="https://www.geos-ai.com/terms.html" target="_blank" rel="noopener noreferrer" style={{ padding: "12px 0", fontWeight: "400", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9", display: "block" }}>Terms &amp; Conditions</a>
               </nav>
             </div>
           </div>
           {/* Copyright bar */}
           <div className="flex justify-center items-center" style={{ padding: "15px 100px", borderTop: "1px solid rgba(255, 255, 255, 0.25)" }}>
-            <span style={{ fontWeight: "325", fontSize: "14px", lineHeight: "180%", color: "#FFFFFF", whiteSpace: "nowrap" }}>&copy; 2025 ProofPix &middot; <a href="https://geos-ai.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#FFFFFF" }}>Geos LLC</a></span>
+            <span style={{ fontWeight: "325", fontSize: "14px", lineHeight: "180%", color: "#FFFFFF", whiteSpace: "nowrap" }}>&copy; 2026 ProofPix &middot; <a href="https://geos-ai.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#FFFFFF" }}>Geos LLC</a></span>
           </div>
         </div>
 
@@ -1255,11 +1312,11 @@ function AppV2() {
           {/* Row 2: copyright + legal */}
           <div className="flex flex-row justify-between items-center w-full">
             <span style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-black">
-              &copy; 2025 ProofPix &middot; <a href="https://geos-ai.com/" target="_blank" rel="noopener noreferrer">Geos LLC</a>
+              &copy; 2026 ProofPix &middot; <a href="https://geos-ai.com/" target="_blank" rel="noopener noreferrer">Geos LLC</a>
             </span>
             <nav className="flex flex-row items-center" style={{ gap: "36px" }}>
-              <a href="#privacy" style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-[#161C2D]">Privacy Policy</a>
-              <a href="#terms" style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-[#161C2D]">Terms &amp; Conditions</a>
+              <a href="https://www.geos-ai.com/privacy.html" target="_blank" rel="noopener noreferrer" style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-[#161C2D]">Privacy Policy</a>
+              <a href="https://www.geos-ai.com/terms.html" target="_blank" rel="noopener noreferrer" style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-[#161C2D]">Terms &amp; Conditions</a>
             </nav>
           </div>
         </div>

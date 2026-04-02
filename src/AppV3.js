@@ -121,27 +121,65 @@ function App() {
               Download App
             </button>
           </header>
-          {/* Mobile hero */}
-          <div className="relative w-full sm:hidden" style={{ background: "#FFFFFF" }}>
-            {/* Yellow gradient — covers top area */}
+          {/* Mobile hero — fits viewport height */}
+          <div className="relative w-full sm:hidden" style={{ height: "100dvh", background: "#FFFFFF" }}>
+            {/* Yellow gradient — covers top area behind logo */}
             <div
               className="absolute top-0 left-0 w-full pointer-events-none"
               style={{
-                height: "120px",
+                height: "25%",
                 background: "linear-gradient(180deg, rgba(242, 195, 27, 0.4) 0%, rgba(242, 195, 27, 0) 100%)",
               }}
             />
-            {/* Logo */}
-            <div className="flex justify-center pt-6 pb-4 relative z-10">
-              <div className="flex items-center" style={{ gap: "8px" }}>
-                <img src="/logo.png" alt="ProofPix" style={{ height: "50.86px" }} className="w-auto" />
-                <span style={{ fontWeight: "600", fontSize: "32.2px", lineHeight: "39px", letterSpacing: "-0.146px" }} className="text-black">
+            {/* Background image — content area, fading to white */}
+            <img
+              src={HERO_MOBILE_IMGS[heroIndex]}
+              alt=""
+              className="absolute left-0 w-full object-cover"
+              style={{ top: "15%", height: "50%" }}
+            />
+            {/* Gradient fade from image into white */}
+            <div
+              className="absolute left-0 w-full pointer-events-none"
+              style={{
+                top: "15%",
+                height: "50%",
+                background:
+                  "linear-gradient(to bottom, rgb(252 244 215) 0%, rgba(255, 255, 255, 0.75) 25%, rgba(255,255,255,0) 50%, #FFFFFF 90%)",
+              }}
+            />
+            {/* Logo centered at top — add shadow only to the icon so it stays visible over photos */}
+            <div className="absolute inset-x-0 flex justify-center" style={{ top: "3.2%" }}>
+              <div
+                className="flex items-center"
+                style={{
+                  gap: "8px",
+                }}
+              >
+                <img
+                  src="/logo.png"
+                  alt="ProofPix"
+                  style={{
+                    height: "50.86px",
+                    filter: "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15))",
+                  }}
+                  className="w-auto"
+                />
+                <span
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "32.2px",
+                    lineHeight: "39px",
+                    letterSpacing: "-0.146px",
+                  }}
+                  className="text-black"
+                >
                   ProofPix
                 </span>
               </div>
             </div>
-            {/* Content */}
-            <div className="flex flex-col items-center px-5 pb-6">
+            {/* Content — positioned from bottom so buttons always visible */}
+            <div className="absolute left-0 right-0 bottom-0 flex flex-col items-center px-5" style={{ paddingBottom: "3%" }}>
               <h1 className="text-center text-black" style={{ width: "363px", maxWidth: "100%", fontSize: "28px", lineHeight: "36px", fontWeight: "600", letterSpacing: "-0.201242px" }}>
                 Before &amp; After Photos—<br />Organized &amp; Professional
               </h1>
@@ -200,13 +238,24 @@ function App() {
               </a>
             </div>
 
+            {/* Hero image — visible below the store buttons */}
+            <div className="w-full mt-8 overflow-hidden" style={{ position: "relative" }}>
+              <img
+                src={HERO_DESKTOP_IMGS[heroIndex]}
+                alt=""
+                className="w-full h-auto block"
+                loading="eager"
+              />
+              {/* Fade in at top, fade out at bottom */}
+              <div className="absolute top-0 left-0 right-0" style={{ height: "80px", background: "linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0))" }} />
+              <div className="absolute bottom-0 left-0 right-0" style={{ height: "80px", background: "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))" }} />
+            </div>
           </div>
           </div>
         </section>
 
-
         {/* Your Work Photos section — replaces Camera Chaos heading */}
-        <section id="camera-chaos" className="-mt-12 sm:-mt-12 pt-0 px-4 sm:px-6">
+        <section id="camera-chaos" className="pt-8 sm:pt-20 px-4 sm:px-6">
           <div className="flex flex-col items-center" style={{ gap: "16px", marginBottom: "32px" }}>
             <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="text-center text-[28px] leading-[36px] tracking-tight text-black lg:text-[44px] lg:leading-[62px]">
               From Camera Chaos to Clear Proof
