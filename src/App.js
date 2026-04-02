@@ -1206,8 +1206,8 @@ function App() {
                 <div style={{ padding: "12px 0" }}>
                   <span style={{ fontWeight: "700", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9" }}>Legal</span>
                 </div>
-                <a href="https://www.geos-ai.com/privacy.html" target="_blank" rel="noopener noreferrer" style={{ padding: "12px 0", fontWeight: "400", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9", display: "block" }}>Privacy Policy</a>
-                <a href="https://www.geos-ai.com/terms.html" target="_blank" rel="noopener noreferrer" style={{ padding: "12px 0", fontWeight: "400", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9", display: "block" }}>Terms &amp; Conditions</a>
+                <a href="/privacy" style={{ padding: "12px 0", fontWeight: "400", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9", display: "block" }}>Privacy Policy</a>
+                <a href="/terms" style={{ padding: "12px 0", fontWeight: "400", fontSize: "16px", lineHeight: "140%", color: "#D9D9D9", display: "block" }}>Terms &amp; Conditions</a>
               </nav>
             </div>
           </div>
@@ -1243,8 +1243,8 @@ function App() {
               &copy; 2026 ProofPix &middot; <a href="https://geos-ai.com/" target="_blank" rel="noopener noreferrer">Geos LLC</a>
             </span>
             <nav className="flex flex-row items-center" style={{ gap: "36px" }}>
-              <a href="https://www.geos-ai.com/privacy.html" target="_blank" rel="noopener noreferrer" style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-[#161C2D]">Privacy Policy</a>
-              <a href="https://www.geos-ai.com/terms.html" target="_blank" rel="noopener noreferrer" style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-[#161C2D]">Terms &amp; Conditions</a>
+              <a href="/privacy" style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-[#161C2D]">Privacy Policy</a>
+              <a href="/terms" style={{ fontWeight: "400", fontSize: "15px", lineHeight: "26px", letterSpacing: "-0.1px" }} className="text-[#161C2D]">Terms &amp; Conditions</a>
             </nav>
           </div>
         </div>

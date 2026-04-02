@@ -6,6 +6,9 @@ import "./index.css";
 import App from "./App";
 import AppV2 from "./AppV2";
 import AppV3 from "./AppV3";
+import Privacy from "./Privacy";
+import Terms from "./Terms";
+import DataDeletion from "./DataDeletion";
 import reportWebVitals from "./reportWebVitals";
 import { remoteConfig, analytics, logEvent, fetchAndActivate, getValue } from "./firebase";
 
@@ -32,8 +35,12 @@ const appTree = (
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        {/* Legal pages */}
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/data-deletion" element={<DataDeletion />} />
         {/* Direct access still works for testing */}
-<Route path="/v2" element={<AppV2 />} />
+        <Route path="/v2" element={<AppV2 />} />
         <Route path="/v3" element={<AppV3 />} />
         {/* All other paths go through A/B split */}
         <Route path="*" element={<ABRoot />} />
