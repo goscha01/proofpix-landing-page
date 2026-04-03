@@ -5,9 +5,20 @@ function DataDeletion() {
     <LegalPage
       title="Data Deletion Policy"
       subtitle="How to request deletion of your account and data"
-      lastUpdated="April 2, 2026"
+      lastUpdated="April 3, 2026"
     >
-      <Section title="How to Request Data Deletion">
+      <Section title="Data Storage and Deletion">
+        <P>ProofPix does not store user photos on its servers. Photos are stored locally on your device or in your connected cloud storage accounts (Google Drive, Dropbox, or iCloud).</P>
+        <P>To delete your data:</P>
+        <UL items={[
+          "Remove the app from your device to delete local data",
+          "Delete files directly from your connected cloud storage provider",
+          "Disconnect cloud integrations within the app if applicable",
+        ]} />
+        <P>If you have contacted us via forms, you may request deletion of that data by contacting <a href="mailto:info@geos-ai.com" style={{ color: "#2563EB" }}>info@geos-ai.com</a>.</P>
+      </Section>
+
+      <Section title="How to Request Account Deletion">
         <P>If you would like to delete your ProofPix account and all associated data, you can do so in one of the following ways:</P>
         <UL items={[
           <><strong>In-app:</strong> Go to Settings &gt; Account &gt; Delete Account. This will permanently delete your account and all associated data.</>,

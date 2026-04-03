@@ -5,7 +5,7 @@ function Terms() {
     <LegalPage
       title="Terms of Service"
       subtitle="Terms governing access to and use of ProofPix"
-      lastUpdated="April 2, 2026"
+      lastUpdated="April 3, 2026"
     >
       <Section title="Introduction">
         <P>These Terms of Service ("Terms") govern access to and use of ProofPix, a product operated by Geos LLC ("Geos," "Company," "we," "us," or "our").</P>
@@ -109,15 +109,19 @@ function Terms() {
         <P>We may suspend or terminate accounts for violation of these Terms, non-payment, or security concerns. You may cancel your account at any time. Upon termination, your data will be handled according to our <a href="/data-deletion" style={{ color: "#2563EB" }}>Data Deletion Policy</a>.</P>
       </Section>
 
-      <Section title="12. Privacy">
+      <Section title="12. Analytics and Advertising">
+        <P>ProofPix uses third-party analytics and advertising services to improve the product and measure the effectiveness of marketing campaigns. Use of these services is governed by our <a href="/privacy" style={{ color: "#2563EB" }}>Privacy Policy</a>.</P>
+      </Section>
+
+      <Section title="13. Privacy">
         <P>Use of ProofPix is also governed by our <a href="/privacy" style={{ color: "#2563EB" }}>Privacy Policy</a>.</P>
       </Section>
 
-      <Section title="13. Changes to Terms">
+      <Section title="14. Changes to Terms">
         <P>We may update these Terms from time to time. Continued use of ProofPix constitutes acceptance of updated Terms.</P>
       </Section>
 
-      <Section title="14. Contact Information">
+      <Section title="15. Contact Information">
         <P>
           If you have questions about these Terms, contact us:<br />
           <strong>Geos LLC</strong><br />
