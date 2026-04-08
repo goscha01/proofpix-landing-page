@@ -1,0 +1,30 @@
+# ProofPix
+> Before-and-after photo app for service professionals
+
+ProofPix helps cleaners, contractors, Airbnb hosts, inspectors, and field teams capture, organize, and share professional before-and-after photo documentation. It keeps work photos separate from your personal gallery and turns job site photos into organized, branded visual proof.
+
+## Features
+- Bulk Capture: Shoot before/after photos in sequence without mixing
+- Ghost Mode: Overlay previous shot to match angles exactly
+- Custom Layouts: Add labels, fonts, colors, and watermarks
+- Project Organization: Keep work photos separate from personal gallery
+- Drive/Dropbox Linking: Auto-sync to your cloud storage
+- Team Uploads: Simple field workflow for crews
+
+## Pricing
+- Starter: $0/month - Capture & pair before/after photos, flexible layouts, share individual photos
+- Pro: $8.99/month - Bulk sharing, cloud uploads, custom labels & watermark, unlimited projects
+- Business: $24.99/month - Up to 5 team members, shared cloud access, consistent team workflows
+- Enterprise: $69.99/month - Up to 15 team members, multiple locations & profiles
+
+## Use Cases
+- Cleaning & Airbnb: Document room condition before and after each turnover
+- Renovation & Construction: Track project progress with organized photo documentation
+- Landscaping: Capture yard transformations with consistent angles
+- Auto Detailing: Show clients clear before/after results
+- Property Inspections: Record conditions with timestamped, organized proof
+
+## Links
+- Website: https://www.proofpix.app
+- Google Play: https://play.google.com/store/apps/details?id=com.proofpix.app
+- App Store: https://apps.apple.com/us/app/proofpix/id6754261444

@@ -18,8 +18,22 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "reactSnap": {
+    "include": [
+      "/"
+    ],
+    "exclude": [
+      "/v2"
+    ],
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
+    "skipThirdPartyRequests": true
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "react-snap": "^1.23.0",
     "sharp": "^0.34.5"
   }
 }

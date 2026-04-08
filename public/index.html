@@ -1,47 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"  />
-    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F2C31B" />
     <meta
       name="description"
-      content="For cleaners, contractors, Airbnb, inspectors, and field teams."
+      content="ProofPix is a before-and-after photo app for cleaners, contractors, inspectors, and field teams. Bulk capture, ghost overlay, custom layouts, and team uploads. Free starter plan available."
     />
+    <link rel="canonical" href="https://www.proofpix.app/" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Hero image preloads -->
+    <link rel="preload" as="image" href="%PUBLIC_URL%/bg1-desktop.jpg" media="(min-width: 640px)" />
+    <link rel="preload" as="image" href="%PUBLIC_URL%/bg1-mobile.jpg" media="(max-width: 639px)" />
+
     <!-- Alexandria font (Google Fonts CDN) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Proofpix</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.proofpix.app/" />
+    <meta property="og:title" content="ProofPix - Before & After Photo App for Service Pros" />
+    <meta property="og:description" content="Capture, organize, and share before/after photos. Built for cleaners, contractors, inspectors, and field teams. Free to start." />
+    <meta property="og:image" content="https://www.proofpix.app/appscreenshot.png" />
+    <meta property="og:site_name" content="ProofPix" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ProofPix - Before & After Photo App for Service Pros" />
+    <meta name="twitter:description" content="Capture, organize, and share before/after photos. Built for cleaners, contractors, inspectors, and field teams." />
+    <meta name="twitter:image" content="https://www.proofpix.app/appscreenshot.png" />
+
+    <title>ProofPix - Before &amp; After Photo App for Service Pros | Free to Start</title>
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.proofpix.app/#organization",
+          "name": "ProofPix",
+          "url": "https://www.proofpix.app",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.proofpix.app/logo512.png",
+            "width": 512,
+            "height": 512
+          },
+          "sameAs": [
+            "https://play.google.com/store/apps/details?id=com.proofpix.app",
+            "https://apps.apple.com/us/app/proofpix/id6754261444"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.proofpix.app/#website",
+          "name": "ProofPix",
+          "url": "https://www.proofpix.app",
+          "publisher": { "@id": "https://www.proofpix.app/#organization" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.proofpix.app/#webpage",
+          "url": "https://www.proofpix.app",
+          "name": "ProofPix - Before & After Photo App for Service Professionals",
+          "description": "Capture, organize, and share before/after photos without cluttering your gallery. For cleaners, contractors, Airbnb, inspectors, and field teams.",
+          "isPartOf": { "@id": "https://www.proofpix.app/#website" },
+          "about": { "@id": "https://www.proofpix.app/#softwareapp" },
+          "publisher": { "@id": "https://www.proofpix.app/#organization" },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.proofpix.app/#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.proofpix.app" }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.proofpix.app/#softwareapp",
+          "name": "ProofPix",
+          "description": "Before & after photo app for service professionals. Capture, organize, and share before/after photos without cluttering your gallery.",
+          "url": "https://www.proofpix.app",
+          "applicationCategory": "PhotographyApplication",
+          "operatingSystem": "Android, iOS",
+          "image": "https://www.proofpix.app/appscreenshot.png",
+          "screenshot": "https://www.proofpix.app/appscreenshot.png",
+          "installUrl": [
+            "https://play.google.com/store/apps/details?id=com.proofpix.app",
+            "https://apps.apple.com/us/app/proofpix/id6754261444"
+          ],
+          "author": { "@id": "https://www.proofpix.app/#organization" },
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Starter",
+              "description": "For individuals getting started. Capture & pair before/after photos, match angles with photo overlay, flexible layouts, share individual photos.",
+              "price": "0",
+              "priceCurrency": "USD",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "name": "Pro",
+              "description": "For solo professionals. Bulk sharing & cloud uploads, custom labels, colors & watermark, unlimited projects.",
+              "price": "8.99",
+              "priceCurrency": "USD",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "name": "Business",
+              "description": "For small teams. Up to 5 team members, shared cloud access, consistent team workflows.",
+              "price": "24.99",
+              "priceCurrency": "USD",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "name": "Enterprise",
+              "description": "For growing organizations. Up to 15 team members, multiple locations & profiles, scalable high-volume workflows.",
+              "price": "69.99",
+              "priceCurrency": "USD",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock"
+            }
+          ],
+          "review": [
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Sarah K.", "jobTitle": "Site Engineer" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "As a Site Engineer managing multiple active sites, my camera roll used to be a disaster zone of concrete pours, rebar checks, and drywall framing — all mixed in with my personal photos. ProofPix has completely streamlined how I document progress."
+            }
+          ],
+          "featureList": [
+            "Bulk before/after photo capture",
+            "Ghost mode for angle matching",
+            "Custom layouts with labels, fonts, colors, and watermark",
+            "Project-based photo organization",
+            "Google Drive and Dropbox linking",
+            "Team uploads and field workflows"
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <h1>ProofPix - Before &amp; After Photo App for Service Professionals</h1>
+      <p>ProofPix is a before-and-after photo documentation app designed for service professionals. Whether you're a cleaning company capturing room turnovers, a contractor documenting renovation progress, or a property inspector recording conditions, ProofPix keeps your work photos organized and separate from your personal gallery.</p>
+      <p>Features include bulk capture mode, ghost overlay for matching angles, custom layouts with watermarks, project-based organization, and one-tap cloud sync to Google Drive or Dropbox. Available on iOS and Android with a free starter plan.</p>
+      <h2>Pricing</h2>
+      <ul>
+        <li>Starter: Free - Capture &amp; pair before/after photos, flexible layouts, share individual photos</li>
+        <li>Pro: $8.99/month - Bulk sharing, cloud uploads, custom labels &amp; watermark, unlimited projects</li>
+        <li>Business: $24.99/month - Up to 5 team members, shared cloud access</li>
+        <li>Enterprise: $69.99/month - Up to 15 team members, multiple locations</li>
+      </ul>
+      <p><a href="https://play.google.com/store/apps/details?id=com.proofpix.app">Get ProofPix on Google Play</a> | <a href="https://apps.apple.com/us/app/proofpix/id6754261444">Download on the App Store</a></p>
+    </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

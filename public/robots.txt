@@ -1,3 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /v2
+Disallow: /v3
+
+Sitemap: https://www.proofpix.app/sitemap.xml
