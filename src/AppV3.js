@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { AlertCircle, ArrowRight, Check, CheckCircle2, Info, Star } from "lucide-react";
+import UploadToolSection from "./UploadTool";
+import CompareFeatures from "./CompareFeatures";
 
 const BEFORE_AFTER_PAIRS = 6;
 // Use .jpg for before/after (lighter than PNG) so the page loads faster when hosted
@@ -17,12 +19,12 @@ const HERO_DESKTOP_IMGS = ["/bg1-desktop.jpg", "/bg2-desktop.jpg", "/bg3-desktop
 const HERO_MOBILE_IMGS = ["/bg1-mobile.jpg", "/bg2-mobile.jpg", "/bg3-mobile.jpg"];
 
 const KEY_FEATURES_MOBILE = [
-  { title: "Bulk Capture", description: "Shoot before/after without mixing" },
-  { title: "Ghost Mode", description: "Match angles instantly" },
-  { title: "Custom Layouts", description: "Labels, fonts, colors, watermark" },
-  { title: "Project Organization", description: "No gallery clutter" },
-  { title: "Drive/Dropbox Linking", description: "Use your cloud" },
-  { title: "Team Uploads", description: "Simple field workflow" },
+  { title: "Before → Progress → After", description: "Document every stage of the job" },
+  { title: "Ghost Overlay", description: "Match the original angle every time" },
+  { title: "Comparison Views", description: "Overlay, Split, or Side-by-Side" },
+  { title: "Auto-Organized", description: "By location, room, area, and timeline" },
+  { title: "Cloud Sync", description: "Google Drive & Dropbox" },
+  { title: "Pro Reports", description: "Branded reports ready for clients" },
 ];
 
 const KEY_FEATURE_IMAGES = [
@@ -181,14 +183,14 @@ function App() {
             {/* Content — positioned from bottom so buttons always visible */}
             <div className="absolute left-0 right-0 bottom-0 flex flex-col items-center px-5" style={{ paddingBottom: "3%" }}>
               <h1 className="text-center text-black" style={{ width: "363px", maxWidth: "100%", fontSize: "28px", lineHeight: "36px", fontWeight: "600", letterSpacing: "-0.201242px" }}>
-                Before &amp; After Photos—<br />Organized &amp; Professional
+                Document Your Work.<br />Prove Your Results.
               </h1>
               <p className="text-center text-black" style={{ width: "348px", maxWidth: "100%", fontSize: "17px", lineHeight: "25px", fontWeight: "300", letterSpacing: "-0.201242px", marginTop: "14px" }}>
-                Capture, organize, and share before/after photos without cluttering your gallery.
+                Capture before, progress, and after photos that stay organized, match the original angle, and are ready to share in seconds.
               </p>
               <div className="flex items-start rounded-full" style={{ width: "313px", padding: "10px 20px", marginTop: "14px", background: "rgba(255, 255, 255, 0.4)", border: "1px solid rgba(0, 0, 0, 0.24)" }}>
                 <p style={{ fontSize: "14px", lineHeight: "17px", fontWeight: "300", letterSpacing: "-0.201242px" }} className="text-black text-center w-full">
-                  For cleaners, contractors, Airbnb, inspectors, and field teams.
+                  Built for cleaners, contractors, landscapers, painters, inspectors, Airbnb hosts, and service pros.
                 </p>
               </div>
               <div className="flex items-center" style={{ gap: "21px", marginTop: "14px" }}>
@@ -213,17 +215,16 @@ function App() {
           {/* Desktop hero */}
           <div className="mx-auto hidden w-full flex-1 flex-col items-center text-center sm:flex">
             <div style={{ backgroundColor: "rgba(255, 255, 255, 0.4)", fontFamily: "'Alexandria', sans-serif", fontWeight: "300", fontSize: "16px", lineHeight: "20px", letterSpacing: "-0.201242px", border: "1px solid rgba(0, 0, 0, 0.24)" }} className="mb-6 inline-flex rounded-full px-5 py-[10px] text-black" >
-              For cleaners, contractors, Airbnb, inspectors, and field teams.
+              Built for cleaners, contractors, landscapers, painters, inspectors, Airbnb hosts, and service pros.
             </div>
 
             <h1 style={{ fontWeight: "600", fontSize: "52px", lineHeight: "63px", letterSpacing: "-0.201242px", width: "655px" }} className="mb-4 text-center text-proofpix-black">
-              Before &amp; After Photos—
-              <span className="block">Organized &amp; Professional</span>
+              Document Your Work.
+              <span className="block">Prove Your Results.</span>
             </h1>
 
             <p style={{ fontWeight: "300", fontSize: "28px", lineHeight: "34px", letterSpacing: "-0.201242px", width: "655px" }} className="mb-10 text-center text-black">
-              Capture, organize, and share before/after photos without cluttering your
-              gallery.
+              Capture before, progress, and after photos that stay organized, match the original angle, and are ready to share in seconds.
             </p>
 
             <div className="flex items-center justify-center" style={{ gap: "21px" }}>
@@ -254,17 +255,20 @@ function App() {
           </div>
         </section>
 
+        {/* Upload 2 Photos — try-it-now tool */}
+        <UploadToolSection />
+
         {/* Your Work Photos section — replaces Camera Chaos heading */}
         <section id="camera-chaos" className="pt-8 sm:pt-20 px-4 sm:px-6">
           <div className="flex flex-col items-center" style={{ gap: "16px", marginBottom: "32px" }}>
             <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="text-center text-[28px] leading-[36px] tracking-tight text-black lg:text-[44px] lg:leading-[62px]">
-              From Camera Chaos to Clear Proof
+              Stop Losing Job Photos in Your Camera Roll
             </h2>
             <p style={{ fontWeight: "300", fontSize: "27px", lineHeight: "130%", maxWidth: "1024px" }} className="hidden text-center text-[#2D2D2D] sm:block">
-              Job photos buried in your camera roll don&apos;t prove anything. ProofPix pairs every before with its after, matches the angle automatically, and delivers branded documentation you can share in seconds.
+              Most service pros still use their phone gallery to document work. Before photos go missing, angles don&apos;t match, progress updates get buried, and disputes leave you searching for proof. You did the work — you need proof.
             </p>
             <p style={{ fontWeight: "300", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="text-center text-[#2D2D2D] sm:hidden">
-              Job photos buried in your camera roll don&apos;t prove anything. ProofPix pairs every before with its after, matches angles automatically, and delivers branded proof you can share in seconds.
+              Most service pros still use their phone gallery to document work. Before photos go missing, angles don&apos;t match, and disputes leave you searching for proof. You did the work — you need proof.
             </p>
           </div>
           {/* Mobile/Tablet layout — single frame, dim within pairs, swipe between pairs */}
@@ -335,12 +339,12 @@ function App() {
             {/* Characteristics — progressively turn from red to green */}
             <div className="flex flex-col w-full" style={{ gap: "10px", paddingLeft: "16px" }}>
               {[
-                { red: "Work photos mix with personal", green: "Work photos stay separate" },
-                { red: "No project structure", green: "Projects keep photos grouped" },
+                { red: "Before photos are hard to find", green: "Every Before paired with its After" },
+                { red: "After photos don't match the original angle", green: "Ghost Overlay matches every angle" },
+                { red: "Progress updates get buried in your gallery", green: "Before / Progress / After timeline kept in order" },
+                { red: "Customers ask for proof — you waste time searching", green: "Branded proof shared in seconds" },
+                { red: "Evidence disappears when disputes happen", green: "Timestamps + location stored as evidence" },
                 { red: "No consistent visual style", green: "Custom labels & watermark" },
-                { red: "Hard to share with clients", green: "Easy client sharing" },
-                { red: "Before/After gets out of order", green: "Bulk BEFORE → AFTER capture" },
-                { red: "Angles don't match", green: "Ghost overlay for matching angles" },
               ].map((item, i) => {
                 const isGreen = i < mobileGreenCount;
                 return (
@@ -412,11 +416,11 @@ function App() {
                   The Camera App Isn&apos;t Built for Work
                 </h3>
                 {[
-                  "Work photos mix with personal",
-                  "Before/After gets out of order",
-                  "Angles don\u2019t match",
-                  "Hard to share with clients",
-                  "No project structure",
+                  "Before photos are hard to find",
+                  "After photos don\u2019t match the original angle",
+                  "Progress updates get buried in your gallery",
+                  "Customers ask for proof \u2014 you waste time searching",
+                  "Evidence disappears when disputes happen",
                   "No consistent visual style",
                 ].map((item) => (
                   <div key={item} className="flex items-center min-w-0" style={{ gap: "13px" }}>
@@ -486,11 +490,11 @@ function App() {
                   ProofPix Fixes That
                 </h3>
                 {[
-                  "Work photos stay separate",
-                  "Bulk BEFORE \u2192 AFTER capture",
-                  "Ghost overlay for matching angles",
-                  "Easy client sharing",
-                  "Projects keep photos grouped",
+                  "Every Before paired with its After",
+                  "Ghost Overlay matches every angle",
+                  "Before / Progress / After timeline kept in order",
+                  "Branded proof shared in seconds",
+                  "Timestamps + location stored as evidence",
                   "Custom labels & watermark",
                 ].map((item) => (
                   <div key={item} className="flex items-center min-w-0" style={{ gap: "13px" }}>
@@ -521,8 +525,8 @@ function App() {
                 className="flex items-center justify-end gap-4 text-left"
               >
                 <div className="text-left">
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Bulk Capture</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Shoot before/after<br />without mixing</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Before → Progress → After</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Document every stage<br />of the job</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 0 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
               </button>
@@ -533,8 +537,8 @@ function App() {
                 className="flex items-center justify-end gap-4 text-left"
               >
                 <div className="text-left">
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Ghost Mode</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Match angles<br />instantly</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Ghost Overlay</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Match the original<br />angle every time</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 1 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
               </button>
@@ -545,8 +549,8 @@ function App() {
                 className="flex items-center justify-end gap-4 text-left"
               >
                 <div className="text-left">
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Custom Layouts</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Labels, fonts,<br />colors, watermark</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Comparison Views</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Overlay, Split,<br />or Side-by-Side</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 2 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
               </button>
@@ -593,8 +597,8 @@ function App() {
               >
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 3 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Project Organization</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">No gallery clutter</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Auto-Organized</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">By location, room,<br />area, and timeline</p>
                 </div>
               </button>
 
@@ -605,8 +609,8 @@ function App() {
               >
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 4 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Drive/Dropbox Linking</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Use your cloud</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Cloud Sync</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Google Drive<br />&amp; Dropbox</p>
                 </div>
               </button>
 
@@ -617,8 +621,8 @@ function App() {
               >
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 5 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Team Uploads</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Simple field workflow</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Pro Reports</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Branded reports<br />ready for clients</p>
                 </div>
               </button>
             </div>
@@ -828,48 +832,59 @@ function App() {
                 name: "Starter",
                 price: "$0",
                 period: "/ month",
-                desc: "For individuals getting started.",
+                desc: "Perfect for getting started.",
                 features: [
-                  "Capture & pair before/after photos",
-                  "Match angles with photo overlay",
-                  "Flexible layouts (vertical, square, horizontal)",
-                  "Share individual photos",
+                  "1 project",
+                  "100 photos",
+                  "Before / Progress / After",
+                  "Overlay & Split views",
+                  "Combined image sharing",
+                  "Watermark",
                 ],
               },
               {
                 name: "Pro",
-                price: "$8.99",
+                price: "$14.99",
                 period: "/ month",
-                desc: "For solo professionals.",
+                desc: "For professionals who use ProofPix every day.",
                 features: [
-                  "Everything in Starter",
-                  "Bulk sharing & cloud uploads",
-                  "Custom labels, colors & watermark",
                   "Unlimited projects",
+                  "Unlimited photos",
+                  "Remove watermark",
+                  "Reports",
+                  "Markup",
+                  "Voice notes",
+                  "Cloud sync",
+                  "ZIP export",
+                  "Advanced formats",
                 ],
               },
               {
                 name: "Business",
-                price: "$24.99",
+                price: "$39.99",
                 period: "/ month\n+ seats",
-                desc: "For small teams.",
+                desc: "For growing teams and companies.",
                 features: [
                   "Everything in Pro",
-                  "Up to 5 team members",
-                  "Shared cloud access",
-                  "Consistent team workflows",
+                  "Team members",
+                  "Company logo",
+                  "Metadata overlays",
+                  "Shared projects",
+                  "Business reports",
                 ],
               },
               {
                 name: "Enterprise",
-                price: "$69.99",
-                period: "/ month",
-                desc: "For growing organizations.",
+                price: "Contact Sales",
+                period: "",
+                desc: "For large organizations with custom needs.",
+                cta: "Contact Sales",
                 features: [
                   "Everything in Business",
-                  "Up to 15 team members",
+                  "Custom team size",
                   "Multiple locations & profiles",
-                  "Scalable, high-volume workflows",
+                  "Dedicated onboarding",
+                  "Priority support",
                 ],
               },
             ].map((plan) => (
@@ -908,6 +923,19 @@ function App() {
                       </li>
                     ))}
                   </ul>
+                  <a
+                    href="#compare"
+                    style={{
+                      fontWeight: "500",
+                      fontSize: "14px",
+                      lineHeight: "20px",
+                      color: "#009379",
+                      textDecoration: "underline",
+                      alignSelf: "flex-start",
+                    }}
+                  >
+                    See all features →
+                  </a>
                 </div>
                 {/* Button */}
                 <button
@@ -921,12 +949,15 @@ function App() {
                     lineHeight: "24px",
                   }}
                 >
-                  Get Started
+                  {plan.cta || "Get Started"}
                 </button>
               </div>
             ))}
           </div>
         </section>
+
+        {/* Compare Features Section */}
+        <CompareFeatures />
 
         {/* ROI Numbers Section */}
         <section className="mx-auto w-full overflow-x-hidden py-16 px-4 sm:px-6">
@@ -944,16 +975,16 @@ function App() {
             const commonNote = "Assumes a 5% complaint rate, $100 avg complaint cost, and ~10 min to manually create before/after documentation per job.";
             const tiers = [
               { name: "Starter", price: "$0", tooltip: "Solo professional, 1 job/day (22 jobs/month). ~10% of jobs produce shareable photos worth ~$5 each without branding." },
-              { name: "Pro", price: "$8.99", tooltip: "Solo professional, 1 job/day (22 jobs/month). Branded photos generate ~$10 per marketing image, ~10% of jobs produce usable content." },
-              { name: "Business", price: "$24.99", tooltip: "5-person team, 1.5 jobs/day per worker (~165 jobs/month). ~10% of jobs produce marketing-ready photos worth ~$10 each." },
-              { name: "Enterprise", price: "$69.99", tooltip: "15-person team, 3 jobs/day per worker (~990 jobs/month). ~5% of jobs produce marketing content, ~$10 value per image." },
+              { name: "Pro", price: "$14.99", tooltip: "Solo professional, 1 job/day (22 jobs/month). Branded photos generate ~$10 per marketing image, ~10% of jobs produce usable content." },
+              { name: "Business", price: "$39.99", tooltip: "5-person team, 1.5 jobs/day per worker (~165 jobs/month). ~10% of jobs produce marketing-ready photos worth ~$10 each." },
+              { name: "Enterprise", price: "Custom", tooltip: "15-person team, 3 jobs/day per worker (~990 jobs/month). ~5% of jobs produce marketing content, ~$10 value per image. Contact sales for pricing." },
             ];
             const rows = [
               { icon: "/icon-time.svg", label: "Time saved", values: ["5.4 hrs", "6.4 hrs", "43 hrs", "238 hrs"], color: "#2563EB", tooltip: "Monthly hours saved vs. manually creating before/after documentation." },
               { icon: "/icon-complaints.svg", label: "Complaints reduced", values: ["~50%", "~50%", "~50%", "~50%"], color: "#009379", tooltip: "Estimated reduction in customer complaints when visual proof is provided." },
               { icon: "/icon-marketing.svg", label: "Dispute costs prevented", values: ["$50", "$50", "$400", "$2,500"], color: "#D97706", tooltip: "Monthly savings from avoided disputes, based on complaint rate and average resolution cost." },
               { icon: "/icon-disputes.svg", label: "Marketing value", values: ["$10", "$75", "$160", "$500"], color: "#7C3AED", tooltip: "Estimated monthly revenue from using job photos as marketing content." },
-              { icon: "/icon-price.svg", label: "Plan price", values: ["$0", "$8.99", "$24.99", "$69.99"], color: "#111", isPrice: true },
+              { icon: "/icon-price.svg", label: "Plan price", values: ["$0", "$14.99", "$39.99", "Custom"], color: "#111", isPrice: true },
             ];
             return (
               <>
@@ -1100,7 +1131,7 @@ function App() {
               },
               {
                 q: "Is ProofPix free?",
-                a: "Yes, ProofPix offers a free Starter plan that includes before/after photo capture, angle matching with photo overlay, flexible layouts (vertical, square, horizontal), and the ability to share individual photos. For advanced features like bulk sharing, cloud uploads, custom labels and watermarks, and unlimited projects, the Pro plan is $8.99 per month. Team plans start at $24.99 per month. All paid plans include a 30-day free trial.",
+                a: "Yes, ProofPix offers a free Starter plan that includes 1 project, 100 photos, the Before / Progress / After workflow, Overlay and Split comparison views, combined image sharing, and watermarked exports. For unlimited projects and photos, removing the watermark, reports, markup, voice notes, cloud sync, ZIP export, and advanced formats, the Pro plan is $14.99 per month. Business plans start at $39.99 per month. Enterprise is custom-priced — contact sales. All paid plans include a 30-day free trial.",
               },
               {
                 q: "How does Ghost Mode work?",
@@ -1147,10 +1178,10 @@ function App() {
             <div className="relative flex flex-col items-center" style={{ padding: "22.92px 31.44px", gap: "21.92px", zIndex: 2 }}>
               <div className="flex flex-col items-center text-center" style={{ gap: "20.96px", width: "297.24px" }}>
                 <p style={{ fontWeight: "400", fontSize: "16px", lineHeight: "150%" }} className="text-black w-full text-center">
-                  No registration and credit card required.
+                  Whether it&apos;s a quick before-and-after or a multi-week project, ProofPix keeps every photo organized and easy to share.
                 </p>
                 <h2 style={{ fontWeight: "600", fontSize: "23.34px", lineHeight: "130%", letterSpacing: "-0.01em" }} className="text-black w-full text-center">
-                  Stop Losing Photos. Start Showing Results.
+                  Start Documenting Your Next Job in Less Than 2 Minutes
                 </h2>
               </div>
               <div className="flex items-center" style={{ gap: "21px" }}>
@@ -1191,10 +1222,10 @@ function App() {
             <div className="relative flex flex-col items-start" style={{ padding: "50px 0 50px 67.5px", gap: "36px", width: "659px", zIndex: 2 }}>
               <div className="flex flex-col items-start" style={{ gap: "18px" }}>
                 <p style={{ fontWeight: "400", fontSize: "28px", lineHeight: "130%", letterSpacing: "-0.02em" }} className="text-black">
-                  No registration and credit card required.
+                  Whether it&apos;s a quick before-and-after or a multi-week project, ProofPix keeps every photo organized and easy to share.
                 </p>
                 <h2 style={{ fontWeight: "700", fontSize: "48px", lineHeight: "130%", letterSpacing: "-0.02em" }} className="text-black">
-                  Stop Losing Photos.<br />Start Showing Results.
+                  Start Documenting Your Next Job<br />in Less Than 2 Minutes
                 </h2>
               </div>
               <div className="flex items-center" style={{ gap: "21px" }}>

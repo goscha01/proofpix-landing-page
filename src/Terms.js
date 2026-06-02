@@ -46,9 +46,9 @@ function Terms() {
         <P>ProofPix offers the following plans:</P>
         <UL items={[
           <><strong>Starter ($0/month):</strong> Basic features for individuals</>,
-          <><strong>Pro ($8.99/month):</strong> Advanced features for solo professionals</>,
-          <><strong>Business ($24.99/month):</strong> Team features for up to 5 members</>,
-          <><strong>Enterprise ($69.99/month):</strong> Full features for up to 15 members</>,
+          <><strong>Pro ($14.99/month):</strong> Advanced features for solo professionals</>,
+          <><strong>Business ($39.99/month):</strong> Team features for up to 5 members</>,
+          <><strong>Enterprise (Custom pricing — contact sales):</strong> Full features for larger organizations</>,
         ]} />
         <P>Paid plans are billed monthly. You agree to pay all applicable fees and maintain valid payment information. Subscriptions auto-renew unless cancelled before the next billing cycle.</P>
         <Highlight>Refunds are handled on a case-by-case basis. Contact support for assistance.</Highlight>
