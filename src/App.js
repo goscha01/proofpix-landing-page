@@ -766,7 +766,7 @@ function App() {
             </h2>
             <div style={{ backgroundColor: "rgba(255, 255, 255, 0.4)", border: "1px solid rgba(0, 0, 0, 0.24)" }} className="rounded-full px-5 py-[10px] text-center">
               <span style={{ fontWeight: "300", letterSpacing: "-0.201242px" }} className="text-black text-[14px] leading-[17px] lg:text-[16px] lg:leading-[20px]">
-                30-day trial included.
+                7-day trial included.
               </span>
             </div>
           </div>
@@ -1076,7 +1076,7 @@ function App() {
               },
               {
                 q: "Is ProofPix free?",
-                a: "Yes, ProofPix offers a free Starter plan that includes 1 project, 100 photos, the Before / Progress / After workflow, Overlay and Split comparison views, combined image sharing, and watermarked exports. For unlimited projects and photos, removing the watermark, reports, markup, voice notes, cloud sync, ZIP export, and advanced formats, the Pro plan is $14.99 per month. Business plans start at $39.99 per month. Enterprise is custom-priced — contact sales. All paid plans include a 30-day free trial.",
+                a: "Yes, ProofPix offers a free Starter plan that includes 1 project, 100 photos, the Before / Progress / After workflow, Overlay and Split comparison views, combined image sharing, and watermarked exports. For unlimited projects and photos, removing the watermark, reports, markup, voice notes, cloud sync, ZIP export, and advanced formats, the Pro plan is $14.99 per month. Business plans start at $39.99 per month. Enterprise is custom-priced — contact sales. All paid plans include a 7-day free trial.",
               },
               {
                 q: "How does Ghost Mode work?",
