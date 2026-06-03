@@ -8,6 +8,7 @@ function LegalPage({ title, subtitle, lastUpdated, children }) {
           <span style={{ fontWeight: "600", fontSize: "22px", letterSpacing: "-0.17px" }} className="text-black">ProofPix</span>
         </a>
         <nav className="hidden sm:flex items-center" style={{ gap: "28px" }}>
+          <a href="/help" style={{ fontWeight: "400", fontSize: "15px", color: "#555" }} className="hover:text-black transition-colors">Help</a>
           <a href="/privacy" style={{ fontWeight: "400", fontSize: "15px", color: "#555" }} className="hover:text-black transition-colors">Privacy</a>
           <a href="/terms" style={{ fontWeight: "400", fontSize: "15px", color: "#555" }} className="hover:text-black transition-colors">Terms</a>
           <a href="/data-deletion" style={{ fontWeight: "400", fontSize: "15px", color: "#555" }} className="hover:text-black transition-colors">Data Deletion</a>
@@ -38,6 +39,7 @@ function LegalPage({ title, subtitle, lastUpdated, children }) {
             &copy; {new Date().getFullYear()} ProofPix &middot; <a href="https://geos-ai.com/" target="_blank" rel="noopener noreferrer" className="underline">Geos LLC</a>
           </p>
           <nav className="flex items-center" style={{ gap: "24px" }}>
+            <a href="/help" style={{ fontWeight: "400", fontSize: "13px" }} className="text-[#888] hover:text-black transition-colors">Help</a>
             <a href="/privacy" style={{ fontWeight: "400", fontSize: "13px" }} className="text-[#888] hover:text-black transition-colors">Privacy</a>
             <a href="/terms" style={{ fontWeight: "400", fontSize: "13px" }} className="text-[#888] hover:text-black transition-colors">Terms</a>
             <a href="/data-deletion" style={{ fontWeight: "400", fontSize: "13px" }} className="text-[#888] hover:text-black transition-colors">Data Deletion</a>
@@ -61,6 +63,24 @@ function P({ children }) {
   return <p style={{ fontWeight: "400", fontSize: "15px", lineHeight: "1.75" }} className="text-[#444] mb-3">{children}</p>;
 }
 
+function H3({ children, id }) {
+  return (
+    <h3 id={id} style={{ fontWeight: "600", fontSize: "17px", lineHeight: "1.4", letterSpacing: "-0.15px", marginTop: "16px", marginBottom: "8px" }} className="text-black">
+      {children}
+    </h3>
+  );
+}
+
+function OL({ items }) {
+  return (
+    <ol className="flex flex-col mb-3" style={{ gap: "6px", paddingLeft: "22px", listStyleType: "decimal" }}>
+      {items.map((item, i) => (
+        <li key={i} style={{ fontWeight: "400", fontSize: "15px", lineHeight: "1.75" }} className="text-[#444]">{item}</li>
+      ))}
+    </ol>
+  );
+}
+
 function UL({ items }) {
   return (
     <ul className="flex flex-col mb-3" style={{ gap: "6px", paddingLeft: "20px", listStyleType: "disc" }}>
@@ -79,4 +99,4 @@ function Highlight({ children }) {
   );
 }
 
-export { LegalPage, Section, P, UL, Highlight };
+export { LegalPage, Section, P, H3, UL, OL, Highlight };

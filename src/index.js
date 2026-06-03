@@ -9,6 +9,7 @@ import AppV3 from "./AppV3";
 import Privacy from "./Privacy";
 import Terms from "./Terms";
 import DataDeletion from "./DataDeletion";
+import HelpCenter from "./HelpCenter";
 import reportWebVitals from "./reportWebVitals";
 import { remoteConfig, analytics, logEvent, fetchAndActivate, getValue } from "./firebase";
 
@@ -35,7 +36,8 @@ const appTree = (
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* Legal pages */}
+        {/* Legal & help pages */}
+        <Route path="/help" element={<HelpCenter />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/data-deletion" element={<DataDeletion />} />
