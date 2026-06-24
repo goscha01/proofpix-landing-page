@@ -8,8 +8,8 @@ export default function HelpCenter() {
       lastUpdated="June 3, 2026"
     >
       <Section title="Welcome to ProofPix">
-        <P>ProofPix helps service professionals document their work with before, progress, and after photos that stay organized and ready to share.</P>
-        <P>Whether you&apos;re cleaning furniture, remodeling a kitchen, restoring water damage, painting a home, or documenting landscaping work, ProofPix keeps visual proof of every job in one place.</P>
+        <P>ProofPix is the field documentation platform for service businesses. Capture, organize, document, and share every job — with branded reports, cloud sync, and workflows built for field teams.</P>
+        <P>Whether you&apos;re running a cleaning crew, a restoration team, a roofing operation, a landscaping route, a property portfolio, or any other field service, ProofPix turns job photos into professional, client-ready deliverables.</P>
         <Highlight>
           Looking for something specific? Jump to{" "}
           <a href="#getting-started" style={{ color: "#0B8321", textDecoration: "underline" }}>Getting Started</a>,{" "}
@@ -157,19 +157,24 @@ export default function HelpCenter() {
         <span id="faq" />
 
         <H3>What industries use ProofPix?</H3>
-        <P>ProofPix is used by:</P>
+        <P>ProofPix supports field documentation across 15+ service industries, including:</P>
         <UL items={[
-          "Furniture cleaning companies",
-          "House cleaning services",
-          "Carpet cleaners",
-          "Pressure washing businesses",
-          "Painters",
-          "Remodelers",
-          "Landscapers",
-          "Restoration companies",
-          "Property managers",
-          "Inspectors",
-          "General contractors",
+          "Cleaning (residential, commercial, carpet, furniture)",
+          "Restoration (water damage, fire, mold)",
+          "Roofing",
+          "Landscaping & Pressure Washing",
+          "Flooring",
+          "Painting",
+          "Plumbing",
+          "Electrical",
+          "HVAC",
+          "Auto Detailing",
+          "Property Management",
+          "Handyman",
+          "Pest Control",
+          "Beauty / Med Spa",
+          "Junk Removal",
+          "General Contractors",
         ]} />
 
         <H3>Do I need internet access?</H3>

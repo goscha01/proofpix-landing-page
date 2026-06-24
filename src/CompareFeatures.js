@@ -5,44 +5,38 @@ const TIERS = ["Starter", "Pro", "Business", "Enterprise"];
 
 const CATEGORIES = [
   {
-    name: "Capture & Workflow",
+    name: "Capture",
     rows: [
       { feature: "Projects", values: ["1", "Unlimited", "Unlimited", "Unlimited"] },
       { feature: "Photos", values: ["100", "Unlimited", "Unlimited", "Unlimited"] },
-      { feature: "Before / Progress / After workflow", values: [true, true, true, true] },
-      { feature: "Ghost Overlay", values: [true, true, true, true] },
-      { feature: "Combined Before & After Images", values: [true, true, true, true] },
+      { feature: "Before / Progress / After capture", values: [true, true, true, true] },
+      { feature: "Ghost overlay (match angles)", values: [true, true, true, true] },
+      { feature: "Industry-specific workflows", values: [true, true, true, true] },
+      { feature: "Voice notes & transcription", values: [false, true, true, true] },
+      { feature: "Markup & annotations", values: [false, true, true, true] },
     ],
   },
   {
-    name: "Comparison Views",
+    name: "Organize",
     rows: [
-      { feature: "Overlay view", values: [true, true, true, true] },
-      { feature: "Split view", values: [true, true, true, true] },
+      { feature: "Projects, Sections & Sets", values: [true, true, true, true] },
+      { feature: "Auto-pairing & drag-to-reorder", values: [true, true, true, true] },
+      { feature: "Search & bulk actions", values: [false, true, true, true] },
+      { feature: "Comparison views (Overlay / Split)", values: [true, true, true, true] },
       { feature: "Side-by-Side view", values: [false, true, true, true] },
     ],
   },
   {
-    name: "Sharing & Export",
+    name: "Brand & Report",
     rows: [
-      { feature: "Share photos & comparisons", values: [true, true, true, true] },
       { feature: "Combined image sharing", values: [true, true, true, true] },
       { feature: "ProofPix watermark on exports", values: [true, false, false, false] },
       { feature: "Remove ProofPix watermark", values: [false, true, true, true] },
+      { feature: "Branded PDF reports (7 layouts)", values: [false, true, true, true] },
       { feature: "Custom labels & watermark", values: [false, true, true, true] },
-      { feature: "ZIP export", values: [false, true, true, true] },
-      { feature: "Advanced export formats", values: [false, true, true, true] },
-      { feature: "Company logo branding", values: [false, false, true, true] },
-    ],
-  },
-  {
-    name: "Reports & Annotations",
-    rows: [
-      { feature: "Reports", values: [false, true, true, true] },
-      { feature: "Business reports", values: [false, false, true, true] },
-      { feature: "Markup & annotations", values: [false, true, true, true] },
-      { feature: "Voice notes & transcription", values: [false, true, true, true] },
-      { feature: "Metadata overlays", values: [false, false, true, true] },
+      { feature: "ZIP export & advanced formats", values: [false, true, true, true] },
+      { feature: "Company logo & metadata overlays", values: [false, false, true, true] },
+      { feature: "Executive summaries & business reports", values: [false, false, true, true] },
     ],
   },
   {
@@ -50,16 +44,27 @@ const CATEGORIES = [
     rows: [
       { feature: "Google Drive sync", values: [false, true, true, true] },
       { feature: "Dropbox sync", values: [false, true, true, true] },
+      { feature: "iCloud sync (iOS)", values: [false, true, true, true] },
       { feature: "Background uploads", values: [false, true, true, true] },
-      { feature: "Multiple cloud connections", values: [false, false, true, true] },
+      { feature: "Multiple cloud accounts", values: [false, false, true, true] },
     ],
   },
   {
-    name: "Team & Support",
+    name: "Collaborate",
     rows: [
       { feature: "Team members", values: ["—", "—", "Up to 5", "Custom"] },
+      { feature: "Shared team workspaces", values: [false, false, true, true] },
       { feature: "Shared projects", values: [false, false, true, true] },
+      { feature: "Team analytics", values: [false, false, true, true] },
       { feature: "Multiple locations & profiles", values: [false, false, false, true] },
+    ],
+  },
+  {
+    name: "Business Integrations",
+    rows: [
+      { feature: "API access", values: [false, false, false, true] },
+      { feature: "Webhooks", values: [false, false, false, true] },
+      { feature: "CRM integration (Service Flow)", values: [false, false, false, true] },
       { feature: "Dedicated onboarding", values: [false, false, false, true] },
       { feature: "Priority support", values: [false, false, false, true] },
     ],

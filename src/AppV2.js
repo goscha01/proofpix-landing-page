@@ -20,21 +20,21 @@ const HERO_MOBILE_IMGS = ["/bg1-mobile.jpg", "/bg2-mobile.jpg", "/bg3-mobile.jpg
 
 // [V2] Feature descriptions rewritten for outcomes
 const KEY_FEATURES_MOBILE = [
-  { title: "Before → Progress → After", description: "Document every stage of the job" },
-  { title: "Ghost Overlay", description: "Match the original angle every time" },
-  { title: "Comparison Views", description: "Overlay, Split, or Side-by-Side" },
-  { title: "Auto-Organized", description: "By location, room, area, and timeline" },
-  { title: "Cloud Sync", description: "Google Drive & Dropbox" },
-  { title: "Pro Reports", description: "Branded reports ready for clients" },
+  { title: "Capture Every Stage", description: "Before, progress & after on every job" },
+  { title: "Markup & Voice Notes", description: "Annotate photos & dictate notes on site" },
+  { title: "Branded Reports", description: "Client-ready PDFs with your logo" },
+  { title: "Projects, Sections & Sets", description: "Auto-organized job photos" },
+  { title: "Cloud Sync", description: "Google Drive, Dropbox & iCloud" },
+  { title: "Team Collaboration", description: "Shared workspaces & CRM sync" },
 ];
 
 const KEY_FEATURE_IMAGES = [
-  "/appscreenshot.png", // Bulk Capture
-  "/ghost.png", // Ghost Mode
-  "/custom_layout.png", // Custom Layouts
-  "/projects.png", // Project Organization
-  "/dropbox.png", // Drive/Dropbox Linking
-  "/teams.png", // Team Uploads
+  "/appscreenshot.png", // Capture
+  "/ghost.png", // Markup & Voice Notes (Ghost Overlay)
+  "/custom_layout.png", // Branded Reports
+  "/projects.png", // Projects / Sections / Sets
+  "/dropbox.png", // Cloud Sync
+  "/teams.png", // Team Collaboration
 ];
 
 function AppV2() {
@@ -122,7 +122,7 @@ function AppV2() {
 
             {/* [V2] CTA button text */}
             <button style={{ fontSize: "18px", lineHeight: "22px", fontWeight: "600", letterSpacing: "-0.17px" }} className="rounded-full bg-black px-[26px] py-[13px] font-semibold text-white transition hover:bg-neutral-900">
-              Start capturing proof — free
+              Start Free Trial
             </button>
           </header>
           {/* Mobile hero — fits viewport height */}
@@ -186,16 +186,16 @@ function AppV2() {
             <div className="absolute left-0 right-0 bottom-0 flex flex-col items-center px-5" style={{ paddingBottom: "3%" }}>
               {/* [V2] Hero headline */}
               <h1 className="text-center text-black" style={{ width: "363px", maxWidth: "100%", fontSize: "28px", lineHeight: "36px", fontWeight: "600", letterSpacing: "-0.201242px" }}>
-                Document Your Work.<br />Prove Your Results.
+                Professional Job Photo Documentation
               </h1>
               {/* [V2] Hero subheadline */}
               <p className="text-center text-black" style={{ width: "348px", maxWidth: "100%", fontSize: "17px", lineHeight: "25px", fontWeight: "300", letterSpacing: "-0.201242px", marginTop: "14px" }}>
-                Capture before, progress, and after photos that stay organized, match the original angle, and are ready to share in seconds.
+                Capture, organize, document, and share every job with branded reports, cloud sync, and workflows built for service professionals.
               </p>
               {/* [V2] Audience line */}
               <div className="flex items-start rounded-full" style={{ width: "313px", padding: "10px 20px", marginTop: "14px", background: "rgba(255, 255, 255, 0.4)", border: "1px solid rgba(0, 0, 0, 0.24)" }}>
                 <p style={{ fontSize: "14px", lineHeight: "17px", fontWeight: "300", letterSpacing: "-0.201242px" }} className="text-black text-center w-full">
-                  Built for cleaners, contractors, landscapers, painters, inspectors, Airbnb hosts, and service pros.
+                  Built for cleaning, restoration, roofing, landscaping, contractors, property managers & 15+ field industries.
                 </p>
               </div>
               <div className="flex items-center" style={{ gap: "21px", marginTop: "14px" }}>
@@ -221,18 +221,18 @@ function AppV2() {
           <div className="mx-auto hidden w-full flex-1 flex-col items-center text-center sm:flex">
             {/* [V2] Desktop hero pill */}
             <div style={{ backgroundColor: "rgba(255, 255, 255, 0.4)", fontFamily: "'Alexandria', sans-serif", fontWeight: "300", fontSize: "16px", lineHeight: "20px", letterSpacing: "-0.201242px", border: "1px solid rgba(0, 0, 0, 0.24)" }} className="mb-6 inline-flex rounded-full px-5 py-[10px] text-black" >
-              Built for cleaners, contractors, landscapers, painters, inspectors, Airbnb hosts, and service pros.
+              Built for cleaning, restoration, roofing, landscaping, contractors, property managers & 15+ field industries.
             </div>
 
             {/* [V2] Desktop hero headline */}
             <h1 style={{ fontWeight: "600", fontSize: "52px", lineHeight: "63px", letterSpacing: "-0.201242px", width: "655px" }} className="mb-4 text-center text-proofpix-black">
-              Document Your Work.
-              <span className="block">Prove Your Results.</span>
+              Professional Job Photo
+              <span className="block">Documentation</span>
             </h1>
 
             {/* [V2] Desktop hero subheadline */}
             <p style={{ fontWeight: "300", fontSize: "28px", lineHeight: "34px", letterSpacing: "-0.201242px", width: "655px" }} className="mb-10 text-center text-black">
-              Capture before, progress, and after photos that stay organized, match the original angle, and are ready to share in seconds.
+              Capture, organize, document, and share every job with branded reports, cloud sync, and workflows built for service professionals.
             </p>
 
             <div className="flex items-center justify-center" style={{ gap: "21px" }}>
@@ -273,10 +273,10 @@ function AppV2() {
               Stop Losing Job Photos in Your Camera Roll
             </h2>
             <p style={{ fontWeight: "300", fontSize: "27px", lineHeight: "130%", maxWidth: "1024px" }} className="hidden text-center text-[#2D2D2D] sm:block">
-              Most service pros still use their phone gallery to document work. Before photos go missing, angles don&apos;t match, progress updates get buried, and disputes leave you searching for proof. You did the work — you need proof.
+              Most field teams still document jobs with the phone gallery. Photos pile up unsorted, reports take hours to assemble, and proof is impossible to find when a client pushes back. ProofPix turns every job into structured, shareable, branded documentation.
             </p>
             <p style={{ fontWeight: "300", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="text-center text-[#2D2D2D] sm:hidden">
-              Most service pros still use their phone gallery to document work. Before photos go missing, angles don&apos;t match, and disputes leave you searching for proof. You did the work — you need proof.
+              Most field teams still document jobs with the phone gallery. Photos pile up unsorted and proof disappears when you need it. ProofPix turns every job into structured, branded documentation.
             </p>
           </div>
           {/* Mobile/Tablet layout — single frame, dim within pairs, swipe between pairs */}
@@ -348,12 +348,12 @@ function AppV2() {
             <div className="flex flex-col w-full" style={{ gap: "10px", paddingLeft: "16px" }}>
               {/* [V2] Pain points rewritten — proof-focused */}
               {[
-                { red: "Before photos are hard to find", green: "Every Before paired with its After" },
-                { red: "After photos don't match the original angle", green: "Ghost Overlay matches every angle" },
-                { red: "Progress updates get buried in your gallery", green: "Before / Progress / After timeline kept in order" },
-                { red: "Customers ask for proof — you waste time searching", green: "Branded proof shared in seconds" },
-                { red: "Evidence disappears when disputes happen", green: "Timestamps + location stored as evidence" },
-                { red: "No consistent visual style", green: "Custom labels & watermark" },
+                { red: "Job photos lost in the camera roll", green: "Organized by project, section & set" },
+                { red: "After shots don't match the original angle", green: "Ghost overlay matches every angle" },
+                { red: "Reports take hours to assemble manually", green: "Branded PDF reports in one tap" },
+                { red: "Clients ask for proof — you scramble to find it", green: "Shareable proof with your logo in seconds" },
+                { red: "Notes & details lost between jobs", green: "Voice notes & markup on every photo" },
+                { red: "Photos stuck on one phone — team can't see them", green: "Cloud sync & shared team workspaces" },
               ].map((item, i) => {
                 const isGreen = i < mobileGreenCount;
                 return (
@@ -423,16 +423,16 @@ function AppV2() {
               <div className="flex flex-col min-w-0 justify-center" style={{ gap: "14px", paddingLeft: "clamp(16px, 3vw, 50px)" }}>
                 {/* [V2] Left column title — pain-focused */}
                 <h3 style={{ fontWeight: "600", fontSize: "clamp(16px, 1.5vw, 20px)", lineHeight: "1.2", letterSpacing: "-0.201242px", whiteSpace: "nowrap" }} className="text-black">
-                  The Camera App Isn&apos;t Built for Work
+                  The Camera App Isn&apos;t Built for Field Work
                 </h3>
                 {/* [V2] Pain points — client objections */}
                 {[
-                  "Before photos are hard to find",
-                  "After photos don\u2019t match the original angle",
-                  "Progress updates get buried in your gallery",
-                  "Customers ask for proof \u2014 you waste time searching",
-                  "Evidence disappears when disputes happen",
-                  "No consistent visual style",
+                  "Job photos lost in the camera roll",
+                  "After shots don\u2019t match the original angle",
+                  "Reports take hours to assemble manually",
+                  "Clients ask for proof \u2014 you scramble to find it",
+                  "Notes & details lost between jobs",
+                  "Photos stuck on one phone \u2014 team can\u2019t see them",
                 ].map((item) => (
                   <div key={item} className="flex items-center min-w-0" style={{ gap: "13px" }}>
                     <AlertCircle style={{ width: "39px", height: "39px", flexShrink: 0 }} className="text-[#FF5A6C]" />
@@ -503,12 +503,12 @@ function AppV2() {
                 </h3>
                 {/* [V2] Benefits — outcome-focused */}
                 {[
-                  "Every Before paired with its After",
-                  "Ghost Overlay matches every angle",
-                  "Before / Progress / After timeline kept in order",
-                  "Branded proof shared in seconds",
-                  "Timestamps + location stored as evidence",
-                  "Custom labels & watermark",
+                  "Organized by project, section & set",
+                  "Ghost overlay matches every angle",
+                  "Branded PDF reports in one tap",
+                  "Shareable proof with your logo in seconds",
+                  "Voice notes & markup on every photo",
+                  "Cloud sync & shared team workspaces",
                 ].map((item) => (
                   <div key={item} className="flex items-center min-w-0" style={{ gap: "13px" }}>
                     <CheckCircle2 style={{ width: "39px", height: "39px", flexShrink: 0 }} className="text-[#1EC13B]" />
@@ -526,7 +526,7 @@ function AppV2() {
         <section id="features" className="pb-4">
           {/* [V2] Section title — proof-focused */}
           <h2 style={{ fontWeight: "600", fontSize: "44px", lineHeight: "62px", letterSpacing: "-0.201242px" }} className="mb-12 hidden text-center tracking-tight text-proofpix-black lg:block">
-            Create clear proof of your work — without retakes
+            Capture, Organize, Report &amp; Share — Every Job
           </h2>
 
           {/* Desktop layout */}
@@ -540,8 +540,8 @@ function AppV2() {
               >
                 <div className="text-left">
                   {/* [V2] Benefit-oriented copy */}
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Before → Progress → After</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Document every stage<br />of the job</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Capture Every Stage</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Before, progress &amp; after<br />on every job</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 0 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
               </button>
@@ -553,8 +553,8 @@ function AppV2() {
               >
                 <div className="text-left">
                   {/* [V2] Ghost overlay — proof framing */}
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Ghost Overlay</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Match the original<br />angle every time</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Markup &amp; Voice Notes</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Annotate photos &amp;<br />dictate notes on site</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 1 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
               </button>
@@ -566,8 +566,8 @@ function AppV2() {
               >
                 <div className="text-left">
                   {/* [V2] Outcome-focused */}
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Comparison Views</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Overlay, Split,<br />or Side-by-Side</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Branded Reports</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Client-ready PDFs<br />with your logo</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 2 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
               </button>
@@ -615,7 +615,7 @@ function AppV2() {
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 3 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
                   <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Auto-Organized</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">By location, room,<br />area, and timeline</p>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Projects, sections<br />&amp; photo sets</p>
                 </div>
               </button>
 
@@ -627,7 +627,7 @@ function AppV2() {
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 4 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
                   <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Cloud Sync</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Google Drive<br />&amp; Dropbox</p>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Google Drive, Dropbox<br />&amp; iCloud</p>
                 </div>
               </button>
 
@@ -638,8 +638,8 @@ function AppV2() {
               >
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 5 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Pro Reports</h4>
-                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Branded reports<br />ready for clients</p>
+                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Team Collaboration</h4>
+                  <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Shared workspaces<br />&amp; CRM sync</p>
                 </div>
               </button>
             </div>
@@ -649,7 +649,7 @@ function AppV2() {
           <div className="lg:hidden px-4" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             {/* [V2] Mobile features title — proof-focused */}
             <h3 style={{ fontWeight: "600", fontSize: "28px", lineHeight: "36px", letterSpacing: "-0.201242px" }} className="mb-8 text-center text-black">
-              Create clear proof — without retakes
+              Capture, Organize, Report &amp; Share
             </h3>
 
             {/* Phone device — same frame as desktop (9:19, 2.5rem radius, 8px bezel), scaled for mobile */}
@@ -713,47 +713,47 @@ function AppV2() {
         {/* Use Cases section — horizontal scroll on mobile, grid on sm+ */}
         <section id="use-cases" className="mx-auto w-full overflow-x-hidden py-16 px-4 sm:px-6">
           <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="mb-8 text-center text-[28px] leading-[36px] tracking-tight text-black lg:text-[44px] lg:leading-[62px]">
-            Use Cases
+            Built for Field Teams in Every Service Industry
           </h2>
           {/* Mobile: horizontal scrollable row */}
           <div className="flex w-full min-w-0 overflow-x-auto px-4 pb-2 lg:hidden" style={{ gap: "16px", scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}>
             {[
-              { img: "cleaning.png", label: "Cleaning &\nAirbnb" },
-              { img: "renovation.png", label: "Renovation &\nConstruction" },
-              { img: "landscaping.png", label: "Landscaping" },
+              { img: "cleaning.png", label: "Cleaning &\nRestoration" },
+              { img: "renovation.png", label: "Roofing &\nContractors" },
+              { img: "landscaping.png", label: "Landscaping &\nPressure Wash" },
               { img: "auto-dealing.png", label: "Auto\nDetailing" },
-              { img: "property_inspection.png", label: "Property\nInspections" },
+              { img: "property_inspection.png", label: "Property\nManagement" },
             ].map((item) => (
               <div key={item.label} className="flex flex-shrink-0 flex-col items-center justify-center" style={{ scrollSnapAlign: "start", width: "149px", height: "195px", borderRadius: "20px", border: "1px solid rgba(0,0,0,0.5)" }}>
                 <img src={`/${item.img}`} alt={item.label} style={{ width: "71px", height: "71px" }} className="object-contain mb-3" loading="lazy" decoding="async" />
                 <span style={{ fontWeight: "300", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="whitespace-pre-line text-center text-black">{item.label}</span>
               </div>
             ))}
-            {/* "If your job has Before/After, ProofPix fits." card */}
-            <div className="flex flex-shrink-0 flex-col items-center justify-center" style={{ scrollSnapAlign: "start", width: "149px", height: "195px", borderRadius: "20px", border: "1px solid rgba(0,0,0,0.5)" }}>
-              <span style={{ fontWeight: "800", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="text-center text-black">If your job has</span>
-              <span style={{ fontWeight: "800", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="text-center text-neutral-400">Before / After,</span>
-              <span style={{ fontWeight: "800", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="text-center text-black">ProofPix fits.</span>
+            {/* "+ many more industries" card */}
+            <div className="flex flex-shrink-0 flex-col items-center justify-center px-3" style={{ scrollSnapAlign: "start", width: "149px", height: "195px", borderRadius: "20px", border: "1px solid rgba(0,0,0,0.5)" }}>
+              <span style={{ fontWeight: "800", fontSize: "15px", lineHeight: "22px", letterSpacing: "-0.201242px" }} className="text-center text-black">+ Painting, HVAC,</span>
+              <span style={{ fontWeight: "800", fontSize: "15px", lineHeight: "22px", letterSpacing: "-0.201242px" }} className="text-center text-neutral-400">Plumbing, Electrical,</span>
+              <span style={{ fontWeight: "800", fontSize: "15px", lineHeight: "22px", letterSpacing: "-0.201242px" }} className="text-center text-black">Pest Control &amp; more</span>
             </div>
           </div>
           {/* Desktop: Figma grid */}
           <div className="mx-auto hidden lg:flex flex-row flex-wrap justify-center" style={{ maxWidth: "1270px", gap: "29px" }} >
             {[
-              { img: "cleaning.png", label: "Cleaning & Airbnb" },
-              { img: "renovation.png", label: "Renovation &\nConstruction" },
-              { img: "landscaping.png", label: "Landscaping" },
+              { img: "cleaning.png", label: "Cleaning & Restoration" },
+              { img: "renovation.png", label: "Roofing &\nContractors" },
+              { img: "landscaping.png", label: "Landscaping &\nPressure Washing" },
               { img: "auto-dealing.png", label: "Auto Detailing" },
-              { img: "property_inspection.png", label: "Property Inspections" },
+              { img: "property_inspection.png", label: "Property Management" },
             ].map((item) => (
               <div key={item.label} className="flex flex-col items-center justify-center" style={{ width: "404px", height: "289px", borderRadius: "38px", border: "1px solid rgba(0,0,0,0.5)" }}>
                 <img src={`/${item.img}`} alt={item.label} style={{ width: "121px", height: "121px" }} className="object-contain mb-4" loading="lazy" decoding="async" />
                 <span style={{ fontWeight: "500", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="whitespace-pre-line text-center text-black">{item.label}</span>
               </div>
             ))}
-            <div className="flex flex-col items-center justify-center" style={{ width: "404px", height: "289px", borderRadius: "38px", border: "1px solid rgba(0,0,0,0.5)" }}>
-              <span style={{ fontWeight: "800", fontSize: "41px", lineHeight: "63px", letterSpacing: "-0.201242px" }} className="text-center text-black">If your job has</span>
-              <span style={{ fontWeight: "800", fontSize: "41px", lineHeight: "63px", letterSpacing: "-0.201242px" }} className="text-center text-neutral-400">Before / After,</span>
-              <span style={{ fontWeight: "800", fontSize: "41px", lineHeight: "63px", letterSpacing: "-0.201242px" }} className="text-center text-black">ProofPix fits.</span>
+            <div className="flex flex-col items-center justify-center px-6" style={{ width: "404px", height: "289px", borderRadius: "38px", border: "1px solid rgba(0,0,0,0.5)" }}>
+              <span style={{ fontWeight: "800", fontSize: "32px", lineHeight: "44px", letterSpacing: "-0.201242px" }} className="text-center text-black">+ Painting, HVAC,</span>
+              <span style={{ fontWeight: "800", fontSize: "32px", lineHeight: "44px", letterSpacing: "-0.201242px" }} className="text-center text-neutral-400">Plumbing, Electrical,</span>
+              <span style={{ fontWeight: "800", fontSize: "32px", lineHeight: "44px", letterSpacing: "-0.201242px" }} className="text-center text-black">Pest Control &amp; more</span>
             </div>
           </div>
         </section>
@@ -764,7 +764,7 @@ function AppV2() {
           <div className="flex flex-col items-center" style={{ gap: "38.71px", marginBottom: "68px" }}>
             <h2 style={{ fontWeight: "600", letterSpacing: "-0.201242px" }} className="text-center text-[28px] leading-[36px] tracking-tight text-black lg:text-[44px] lg:leading-[62px]">
               {/* [V2] Differentiation title */}
-              Not another photo app
+              Built specifically for service businesses
             </h2>
             {/* Mobile: single testimonial card */}
             <div className="mx-auto sm:hidden" style={{ width: "341px" }}>
@@ -796,7 +796,7 @@ function AppV2() {
             {/* Desktop/tablet: subtitle */}
             {/* [V2] Differentiation body */}
             <p style={{ fontWeight: "300", fontSize: "27px", lineHeight: "130%", maxWidth: "1024px" }} className="hidden text-center text-[#2D2D2D] sm:block">
-              Most apps help you store photos. ProofPix helps you prove the result. Structured before-and-after capture makes your work easier to show, share, and defend.
+              Mobile-first capture, industry-specific workflows, branded reports, and CRM integrations — purpose-built for field teams, not retrofitted from a consumer photo app.
             </p>
           </div>
           {/* Metric cards */}
@@ -987,10 +987,10 @@ function AppV2() {
           </h2>
           {/* [V2] ROI subtitle */}
           <p style={{ fontWeight: "300", letterSpacing: "-0.201242px" }} className="mb-2 text-center text-[14px] leading-[22px] text-[#555] lg:text-[18px] lg:leading-[28px] max-w-[700px] mx-auto">
-            Less time documenting. Fewer disputes. Clear proof every time.
+            Hours back on every job. Fewer disputes. Branded reports clients trust.
           </p>
           <p style={{ fontWeight: "300", letterSpacing: "-0.201242px" }} className="mb-10 text-center text-[13px] leading-[20px] text-[#777] lg:text-[16px] lg:leading-[24px] max-w-[600px] mx-auto">
-            Even one avoided complaint or one extra job can pay for the app.
+            One avoided dispute or one branded report can pay for the platform.
           </p>
 
           {(() => {
@@ -1149,27 +1149,27 @@ function AppV2() {
             {[
               {
                 q: "What is ProofPix?",
-                a: "ProofPix is a before-and-after photo documentation app built specifically for service professionals. It helps cleaners, contractors, property inspectors, Airbnb hosts, landscapers, and field teams capture, organize, and share professional before-and-after photos without cluttering their personal camera roll. Unlike your regular camera app, ProofPix keeps work photos in dedicated projects, matches angles with ghost overlay, and lets you add custom labels and watermarks for a professional look.",
+                a: "ProofPix is a mobile-first field documentation platform for service businesses. It helps cleaning, restoration, roofing, landscaping, contracting, property management, and other field teams capture, organize, document, and share every job. Photos are auto-organized into Projects, Sections, and Sets; branded PDF reports are generated in one tap; and everything syncs to the cloud and your CRM — purpose-built for the way service pros actually work.",
               },
               {
                 q: "Is ProofPix free?",
-                a: "Yes, ProofPix offers a free Starter plan that includes 1 project, 100 photos, the Before / Progress / After workflow, Overlay and Split comparison views, combined image sharing, and watermarked exports. For unlimited projects and photos, removing the watermark, reports, markup, voice notes, cloud sync, ZIP export, and advanced formats, the Pro plan is $14.99 per month. Business plans start at $39.99 per month. Enterprise is custom-priced — contact sales. All paid plans include a 7-day free trial.",
+                a: "Yes — ProofPix offers a free Starter plan with 1 project, 100 photos, Before / Progress / After capture, comparison views, and watermarked exports. Pro is $14.99/month and unlocks unlimited projects, voice notes, markup, branded reports, cloud sync, and watermark removal. Business is $39.99/month and adds team workspaces, company branding, shared projects, and analytics. Enterprise is custom-priced and includes API access, webhooks, CRM integrations, and priority support. All paid plans include a 7-day free trial.",
               },
               {
-                q: "How does Ghost Mode work?",
-                a: "Ghost Mode is one of ProofPix's most popular features. When you're taking an 'after' photo, Ghost Mode overlays a semi-transparent version of your original 'before' shot on the camera viewfinder. This lets you match the exact same angle, distance, and framing so your before-and-after comparisons look consistent and professional. It's especially useful for renovation projects, cleaning jobs, and property inspections where angle consistency matters.",
+                q: "What industries is ProofPix built for?",
+                a: "ProofPix supports field documentation for cleaning, restoration, roofing, landscaping, pressure washing, flooring, painting, plumbing, electrical, HVAC, auto detailing, property management, handyman, pest control, beauty / med spa, junk removal, and general contractors. Industry-specific workflows ship out of the box, so capture, organization, and reports match the way each trade documents jobs.",
               },
               {
-                q: "Does ProofPix work on iPhone and Android?",
-                a: "Yes, ProofPix is available on both iOS (iPhone and iPad) and Android devices. You can download it from the Apple App Store or Google Play Store. Your account syncs across devices, so you can capture photos on one device and access them from another.",
+                q: "Can I generate professional reports for clients?",
+                a: "Yes. Pro plans and above include 7 report layouts with company branding, logos, watermarks, executive summaries, and photo metadata. Reports export as client-ready PDFs you can send directly, attach to invoices, or upload to your CRM. Business plans add company logo branding and metadata overlays for higher-end deliverables.",
               },
               {
-                q: "Can I share photos with clients?",
-                a: "Absolutely. ProofPix makes it easy to share professional before-and-after photos with clients. You can share individual photos or entire projects. With the Pro plan and above, you get bulk sharing capabilities and can upload directly to Google Drive or Dropbox. Photos can include your custom labels, colors, and watermark for a branded, professional presentation.",
+                q: "Does ProofPix integrate with cloud storage and CRMs?",
+                a: "ProofPix syncs to Google Drive, Dropbox, and iCloud out of the box. Business plans support multiple cloud accounts for team workflows. Enterprise plans add API access, webhooks, and direct CRM integration (including Service Flow) so job photos and reports flow into your existing systems automatically.",
               },
               {
-                q: "How is ProofPix different from my camera app?",
-                a: "Your phone's built-in camera app mixes work photos with personal ones, has no project structure, doesn't help you match angles, and offers no way to add professional labels or watermarks. ProofPix solves all of these problems: it keeps work photos in dedicated projects, uses Ghost Mode for angle matching, supports bulk before/after capture so photos never get out of order, and lets you customize layouts with your branding. It's purpose-built for the way service professionals actually work.",
+                q: "How is ProofPix different from a regular photo app?",
+                a: "Consumer camera apps were never built for field work — they mix job photos with personal ones, have no project structure, no reports, no team collaboration, and no industry workflows. ProofPix is built specifically for service businesses: mobile-first capture, industry-specific templates, branded PDF reports, voice notes & markup, cloud sync, shared team workspaces, and CRM integrations. It replaces the camera roll, a notes app, a folder of edited screenshots, and your reporting tool.",
               },
             ].map((item, i) => (
               <details key={i} className="group border border-black/10 rounded-2xl overflow-hidden">
@@ -1201,7 +1201,7 @@ function AppV2() {
               <div className="flex flex-col items-center text-center" style={{ gap: "20.96px", width: "297.24px" }}>
                 {/* [V2] Mobile CTA — proof framing */}
                 <p style={{ fontWeight: "400", fontSize: "16px", lineHeight: "150%" }} className="text-black w-full text-center">
-                  Whether it&apos;s a quick before-and-after or a multi-week project, ProofPix keeps every photo organized and easy to share.
+                  Whether it&apos;s a single-visit job or a multi-week project, ProofPix turns every photo into branded, shareable documentation — automatically.
                 </p>
                 <h2 style={{ fontWeight: "600", fontSize: "23.34px", lineHeight: "130%", letterSpacing: "-0.01em" }} className="text-black w-full text-center">
                   Start Documenting Your Next Job in Less Than 2 Minutes
@@ -1246,7 +1246,7 @@ function AppV2() {
               <div className="flex flex-col items-start" style={{ gap: "18px" }}>
                 {/* [V2] Desktop CTA — proof framing */}
                 <p style={{ fontWeight: "400", fontSize: "28px", lineHeight: "130%", letterSpacing: "-0.02em" }} className="text-black">
-                  Whether it&apos;s a quick before-and-after or a multi-week project, ProofPix keeps every photo organized and easy to share.
+                  Whether it&apos;s a single-visit job or a multi-week project, ProofPix turns every photo into branded, shareable documentation — automatically.
                 </p>
                 <h2 style={{ fontWeight: "700", fontSize: "48px", lineHeight: "130%", letterSpacing: "-0.02em" }} className="text-black">
                   Start Documenting Your Next Job<br />in Less Than 2 Minutes
@@ -1292,7 +1292,7 @@ function AppV2() {
                 <img src="/logo.png" alt="ProofPix" style={{ height: "59.19px" }} className="w-auto" />
                 <span style={{ fontWeight: "600", fontSize: "37.4648px", lineHeight: "46px", letterSpacing: "-0.170294px" }} className="text-white">ProofPix</span>
               </div>
-              <p style={{ fontSize: "17px", lineHeight: "26px", fontWeight: "500" }} className="text-white">No more searching, sorting, or editing. ProofPix instantly organizes your before-and-after photos for ready-to-share social media posts.</p>
+              <p style={{ fontSize: "17px", lineHeight: "26px", fontWeight: "500" }} className="text-white">The complete job photo platform for service businesses. Capture, organize, report, and share every job — built for field teams.</p>
             </div>
             {/* Quick Links + Legal columns */}
             <div className="flex flex-row" style={{ gap: "59px" }}>
