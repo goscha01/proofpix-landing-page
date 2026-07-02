@@ -253,12 +253,11 @@ function App() {
               }}
             >
               <div
-                className="overflow-hidden w-full"
+                className="overflow-hidden w-full aspect-[3/4]"
                 style={{
                   borderRadius: "44px 44px 0 0",
                   background: "#FFFFFF",
                   position: "relative",
-                  aspectRatio: "3/4",
                 }}
               >
                 {/* Each pair is a wrapper that swipes; before/after inside fade */}
@@ -345,12 +344,11 @@ function App() {
                 }}
               >
                 <div
-                  className="overflow-hidden w-full"
+                  className="overflow-hidden w-full aspect-[3/4]"
                   style={{
                     borderRadius: "62px 62px 0 0",
                     background: "#FFFFFF",
                     position: "relative",
-                    aspectRatio: "3/4",
                   }}
                 >
                   {BEFORE_AFTER_IMGS.map((pair, i) => {
@@ -419,12 +417,11 @@ function App() {
                 }}
               >
                 <div
-                  className="overflow-hidden w-full"
+                  className="overflow-hidden w-full aspect-[3/4]"
                   style={{
                     borderRadius: "62px 62px 0 0",
                     background: "#FFFFFF",
                     position: "relative",
-                    aspectRatio: "3/4",
                   }}
                 >
                   {BEFORE_AFTER_IMGS.map((pair, i) => {
