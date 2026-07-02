@@ -17,10 +17,29 @@
     <link rel="preload" as="image" href="%PUBLIC_URL%/bg1-desktop.jpg" media="(min-width: 640px)" />
     <link rel="preload" as="image" href="%PUBLIC_URL%/bg1-mobile.jpg" media="(max-width: 639px)" />
 
-    <!-- Alexandria font (Google Fonts CDN) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- LCP: phone-mockup screenshot in the hero. Preload with high priority so
+         the request starts before React hydrates and the <img> mounts. -->
+    <link rel="preload" as="image" href="%PUBLIC_URL%/appscreenshot.webp" fetchpriority="high" />
+
+    <!-- Alexandria font, self-hosted variable woff2 (~30 KB). The @font-face
+         rule is inlined here so we don't pay for a second render-blocking CSS
+         round trip (was /fonts/alexandria.css). -->
+    <link rel="preload" as="font" type="font/woff2" href="%PUBLIC_URL%/fonts/alexandria.woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: 'Alexandria';
+        font-style: normal;
+        font-weight: 300 800;
+        font-display: swap;
+        src: url(/fonts/alexandria.woff2) format('woff2-variations'),
+             url(/fonts/alexandria.woff2) format('woff2');
+      }
+    </style>
+
+    <!-- Preconnect to Google Tag Manager + GA4 so the Firebase-injected
+         gtag.js request doesn't pay for DNS + TCP + TLS on the critical path. -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

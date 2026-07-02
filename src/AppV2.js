@@ -2,16 +2,24 @@ import { useState, useEffect, useRef } from "react";
 import { AlertCircle, ArrowRight, Check, CheckCircle2, Info, Star } from "lucide-react";
 import UploadToolSection from "./UploadTool";
 import CompareFeatures from "./CompareFeatures";
+import { isSnap } from "./isSnap";
+
+// Same nl2br helper as App.js — see comment there.
+function nl2br(s) {
+  return String(s).split("\n").flatMap((line, i, arr) => (
+    i < arr.length - 1 ? [line, <br key={i} />] : [line]
+  ));
+}
 
 const BEFORE_AFTER_PAIRS = 6;
 // Use .jpg for before/after (lighter than PNG) so the page loads faster when hosted
 const BEFORE_AFTER_IMGS = [
-  { before: "/before1.jpg", after: "/after1.jpg" },
-  { before: "/before2.jpg", after: "/after2.jpg" },
-  { before: "/before3.jpg", after: "/after3.jpg" },
-  { before: "/before4.jpg", after: "/after4.jpg" },
-  { before: "/before5.jpg", after: "/after5.jpg" },
-  { before: "/before6.jpg", after: "/after6.jpg" },
+  { before: "/before1.webp", after: "/after1.webp" },
+  { before: "/before2.webp", after: "/after2.webp" },
+  { before: "/before3.webp", after: "/after3.webp" },
+  { before: "/before4.webp", after: "/after4.webp" },
+  { before: "/before5.webp", after: "/after5.webp" },
+  { before: "/before6.webp", after: "/after6.webp" },
 ];
 
 // Hero backgrounds — pre-cropped to exact hero dimensions, cycle every 10s
@@ -29,12 +37,12 @@ const KEY_FEATURES_MOBILE = [
 ];
 
 const KEY_FEATURE_IMAGES = [
-  "/appscreenshot.png", // Capture
-  "/ghost.png", // Markup & Voice Notes (Ghost Overlay)
-  "/custom_layout.png", // Branded Reports
-  "/projects.png", // Projects / Sections / Sets
-  "/dropbox.png", // Cloud Sync
-  "/teams.png", // Team Collaboration
+  "/appscreenshot.webp", // Capture
+  "/ghost.webp", // Markup & Voice Notes (Ghost Overlay)
+  "/custom_layout.webp", // Branded Reports
+  "/projects.webp", // Projects / Sections / Sets
+  "/dropbox.webp", // Cloud Sync
+  "/teams.webp", // Team Collaboration
 ];
 
 function AppV2() {
@@ -59,23 +67,27 @@ function AppV2() {
     }
   };
 
+  // See App.js — timers gated on isSnap so react-snap captures initial state
+  // and the client hydration matches (avoids React #418).
+
   useEffect(() => {
+    if (isSnap) return;
     const t = setInterval(() => {
       setBeforeAfterIndex((i) => (i + 1) % BEFORE_AFTER_PAIRS);
     }, 5000);
     return () => clearInterval(t);
   }, []);
 
-  // Mobile camera chaos cycle: 2.5s per phase (before shown, then after shown)
   useEffect(() => {
+    if (isSnap) return;
     const t = setInterval(() => {
       setMobileStep((s) => (s + 1) % (BEFORE_AFTER_PAIRS * 2));
     }, 2500);
     return () => clearInterval(t);
   }, []);
 
-  // Rotate hero background every 10 seconds
   useEffect(() => {
+    if (isSnap) return;
     const t = setInterval(
       () => setHeroIndex((i) => (i + 1) % HERO_DESKTOP_IMGS.length),
       10000
@@ -83,9 +95,8 @@ function AppV2() {
     return () => clearInterval(t);
   }, []);
 
-  // Auto-rotate key features. When user clicks a feature, this effect
-  // re-runs and starts a fresh 5s countdown from that selection.
   useEffect(() => {
+    if (isSnap) return;
     const t = setTimeout(() => {
       setKeyFeatureIndex((i) => (i + 1) % KEY_FEATURE_IMAGES.length);
     }, 5000);
@@ -114,7 +125,7 @@ function AppV2() {
           <div className="relative z-10 w-full sm:h-full sm:flex sm:flex-col">
           <header className="hidden items-center justify-between w-full max-w-[1260px] mx-auto px-[90px] pt-[50px] pb-6 sm:flex">
             <div className="flex items-center gap-[9.31px]">
-              <img src="/logo.png" alt="ProofPix" className="h-[59px] w-auto" />
+              <img src="/logo.png" alt="ProofPix" width="86" height="59" className="h-[59px] w-auto" />
               <span style={{ fontSize: "37.46px", lineHeight: "46px", fontWeight: "600", letterSpacing: "-0.17px" }} className="font-semibold tracking-tight text-proofpix-black">
                 ProofPix
               </span>
@@ -200,10 +211,10 @@ function AppV2() {
               </div>
               <div className="flex items-center" style={{ gap: "21px", marginTop: "14px" }}>
                 <a href="https://play.google.com/store/apps/details?id=com.proofpix.app" target="_blank" rel="noopener noreferrer" aria-label="Get ProofPix on Google Play">
-                  <img src="/playstore.png" alt="Google Play" style={{ width: "162px", height: "54px", borderRadius: "13px" }} />
+                  <img src="/playstore.webp" alt="Google Play" width="162" height="53" style={{ width: "162px", height: "53px", borderRadius: "13px" }} />
                 </a>
                 <a href="https://apps.apple.com/us/app/proofpix/id6754261444" target="_blank" rel="noopener noreferrer" aria-label="Download ProofPix on the App Store">
-                  <img src="/applestore.png" alt="Apple App Store" style={{ width: "157px", height: "54px", borderRadius: "13px" }} />
+                  <img src="/applestore.webp" alt="Apple App Store" width="157" height="52" style={{ width: "157px", height: "52px", borderRadius: "13px" }} />
                 </a>
               </div>
               {/* Scroll indicator — scrolls to next section */}
@@ -238,12 +249,12 @@ function AppV2() {
             <div className="flex items-center justify-center" style={{ gap: "21px" }}>
               {/* Google Play Button */}
               <a href="https://play.google.com/store/apps/details?id=com.proofpix.app" target="_blank" rel="noopener noreferrer" aria-label="Get ProofPix on Google Play">
-                <img style={{ width: "215px", height: "72px", borderRadius: "19px" }} src="/playstore.png" alt="Google Play" />
+                <img width="215" height="70" style={{ width: "215px", height: "70px", borderRadius: "19px" }} src="/playstore.webp" alt="Google Play" />
               </a>
 
               {/* Apple App Store Button */}
               <a href="https://apps.apple.com/us/app/proofpix/id6754261444" target="_blank" rel="noopener noreferrer" aria-label="Download ProofPix on the App Store">
-                <img style={{ width: "208px", height: "72px", borderRadius: "19px" }} src="/applestore.png" alt="Apple App Store" />
+                <img width="208" height="69" style={{ width: "208px", height: "69px", borderRadius: "19px" }} src="/applestore.webp" alt="Apple App Store" />
               </a>
             </div>
 
@@ -318,7 +329,7 @@ function AppV2() {
                       <img
                         src={pair.before}
                         alt="Before"
-                        className="absolute inset-0 w-full h-full object-cover"
+                        width="589" height="728" className="absolute inset-0 w-full h-full object-cover"
                         style={{
                           transition: "opacity 0.6s ease",
                           opacity: !mobileShowingAfter ? 1 : 0,
@@ -329,7 +340,7 @@ function AppV2() {
                       <img
                         src={pair.after}
                         alt="After"
-                        className="absolute inset-0 w-full h-full object-cover"
+                        width="589" height="728" className="absolute inset-0 w-full h-full object-cover"
                         style={{
                           transition: "opacity 0.6s ease",
                           opacity: mobileShowingAfter ? 1 : 0,
@@ -410,7 +421,7 @@ function AppV2() {
                         <img
                           src={pair.before}
                           alt="Before"
-                          className="w-full h-full object-cover"
+                          width="589" height="728" className="w-full h-full object-cover"
                           loading="lazy"
                           decoding="async"
                         />
@@ -486,7 +497,7 @@ function AppV2() {
                         <img
                           src={pair.after}
                           alt="After"
-                          className="w-full h-full object-cover"
+                          width="589" height="728" className="w-full h-full object-cover"
                           loading="lazy"
                           decoding="async"
                         />
@@ -540,7 +551,7 @@ function AppV2() {
               >
                 <div className="text-left">
                   {/* [V2] Benefit-oriented copy */}
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Capture Every Stage</h4>
+                  <h3 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Capture Every Stage</h3>
                   <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Before, progress &amp; after<br />on every job</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 0 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
@@ -553,7 +564,7 @@ function AppV2() {
               >
                 <div className="text-left">
                   {/* [V2] Ghost overlay — proof framing */}
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Markup &amp; Voice Notes</h4>
+                  <h3 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Markup &amp; Voice Notes</h3>
                   <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Annotate photos &amp;<br />dictate notes on site</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 1 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
@@ -566,7 +577,7 @@ function AppV2() {
               >
                 <div className="text-left">
                   {/* [V2] Outcome-focused */}
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Branded Reports</h4>
+                  <h3 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Branded Reports</h3>
                   <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Client-ready PDFs<br />with your logo</p>
                 </div>
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 2 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
@@ -593,7 +604,7 @@ function AppV2() {
                         <img
                           src={img}
                           alt={KEY_FEATURES_MOBILE[i].title}
-                          className="h-full w-full object-cover"
+                          width="386" height="840" className="h-full w-full object-cover"
                           style={{ objectPosition: "50% -2px" }}
                           loading="lazy"
                           decoding="async"
@@ -614,7 +625,7 @@ function AppV2() {
               >
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 3 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Auto-Organized</h4>
+                  <h3 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Auto-Organized</h3>
                   <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Projects, sections<br />&amp; photo sets</p>
                 </div>
               </button>
@@ -626,7 +637,7 @@ function AppV2() {
               >
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 4 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Cloud Sync</h4>
+                  <h3 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Cloud Sync</h3>
                   <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Google Drive, Dropbox<br />&amp; iCloud</p>
                 </div>
               </button>
@@ -638,7 +649,7 @@ function AppV2() {
               >
                 <div className={`flex-shrink-0 rounded-sm ${keyFeatureIndex === 5 ? "bg-[#F2C31B]" : "bg-black/10"}`} style={{ width: "7px", height: "119px" }} />
                 <div>
-                  <h4 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Team Collaboration</h4>
+                  <h3 style={{ fontWeight: "700", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="text-black">Team Collaboration</h3>
                   <p style={{ fontWeight: "300", fontSize: "26px", lineHeight: "32px", letterSpacing: "-0.201242px" }} className="text-black">Shared workspaces<br />&amp; CRM sync</p>
                 </div>
               </button>
@@ -672,7 +683,7 @@ function AppV2() {
                         <img
                           src={img}
                           alt={KEY_FEATURES_MOBILE[i].title}
-                          className="h-full w-full object-cover"
+                          width="386" height="840" className="h-full w-full object-cover"
                           style={{ objectPosition: "50% -2px" }}
                           loading="lazy"
                           decoding="async"
@@ -687,9 +698,9 @@ function AppV2() {
             {/* Feature label + paginator dots */}
             <div className="mx-auto flex flex-col items-center" style={{ gap: "16px", maxWidth: "276px" }}>
               <div className="text-center">
-                <h4 style={{ fontWeight: "700", fontSize: "21px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="text-black">
+                <h3 style={{ fontWeight: "700", fontSize: "21px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="text-black">
                   {KEY_FEATURES_MOBILE[keyFeatureIndex].title}
-                </h4>
+                </h3>
                 <p style={{ fontWeight: "300", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="mt-1 text-black">
                   {KEY_FEATURES_MOBILE[keyFeatureIndex].description}
                 </p>
@@ -701,9 +712,15 @@ function AppV2() {
                     type="button"
                     aria-label={`Feature ${i + 1}: ${KEY_FEATURES_MOBILE[i].title}`}
                     onClick={() => setKeyFeatureIndex(i)}
-                    className="rounded-full transition-all duration-200"
-                    style={{ width: "10px", height: "10px", background: i === keyFeatureIndex ? "#F2C31B" : "#D9D9D9" }}
-                  />
+                    className="inline-flex items-center justify-center transition-all duration-200"
+                    style={{ width: "24px", height: "24px", padding: 0, background: "transparent", border: "none", cursor: "pointer" }}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="rounded-full block"
+                      style={{ width: "10px", height: "10px", background: i === keyFeatureIndex ? "#F2C31B" : "#D9D9D9" }}
+                    />
+                  </button>
                 ))}
               </div>
             </div>
@@ -719,20 +736,20 @@ function AppV2() {
           <div className="flex w-full min-w-0 overflow-x-auto px-4 pb-2 lg:hidden" style={{ gap: "16px", scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}>
             {[
               { img: "cleaning.png", label: "Cleaning &\nRestoration" },
-              { img: "renovation.png", label: "Roofing &\nContractors" },
-              { img: "landscaping.png", label: "Landscaping &\nPressure Wash" },
-              { img: "auto-dealing.png", label: "Auto\nDetailing" },
-              { img: "property_inspection.png", label: "Property\nManagement" },
+              { img: "renovation.webp", label: "Roofing &\nContractors" },
+              { img: "landscaping.webp", label: "Landscaping &\nPressure Wash" },
+              { img: "auto-dealing.webp", label: "Auto\nDetailing" },
+              { img: "property_inspection.webp", label: "Property\nManagement" },
             ].map((item) => (
               <div key={item.label} className="flex flex-shrink-0 flex-col items-center justify-center" style={{ scrollSnapAlign: "start", width: "149px", height: "195px", borderRadius: "20px", border: "1px solid rgba(0,0,0,0.5)" }}>
-                <img src={`/${item.img}`} alt={item.label} style={{ width: "71px", height: "71px" }} className="object-contain mb-3" loading="lazy" decoding="async" />
-                <span style={{ fontWeight: "300", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="whitespace-pre-line text-center text-black">{item.label}</span>
+                <img src={`/${item.img}`} alt={item.label} width="71" height="71" style={{ width: "71px", height: "71px" }} className="object-contain mb-3" loading="lazy" decoding="async" />
+                <span style={{ fontWeight: "300", fontSize: "17px", lineHeight: "25px", letterSpacing: "-0.201242px" }} className="whitespace-pre-line text-center text-black">{nl2br(item.label)}</span>
               </div>
             ))}
             {/* "+ many more industries" card */}
             <div className="flex flex-shrink-0 flex-col items-center justify-center px-3" style={{ scrollSnapAlign: "start", width: "149px", height: "195px", borderRadius: "20px", border: "1px solid rgba(0,0,0,0.5)" }}>
               <span style={{ fontWeight: "800", fontSize: "15px", lineHeight: "22px", letterSpacing: "-0.201242px" }} className="text-center text-black">+ Painting, HVAC,</span>
-              <span style={{ fontWeight: "800", fontSize: "15px", lineHeight: "22px", letterSpacing: "-0.201242px" }} className="text-center text-neutral-400">Plumbing, Electrical,</span>
+              <span style={{ fontWeight: "800", fontSize: "15px", lineHeight: "22px", letterSpacing: "-0.201242px" }} className="text-center text-neutral-500">Plumbing, Electrical,</span>
               <span style={{ fontWeight: "800", fontSize: "15px", lineHeight: "22px", letterSpacing: "-0.201242px" }} className="text-center text-black">Pest Control &amp; more</span>
             </div>
           </div>
@@ -740,19 +757,19 @@ function AppV2() {
           <div className="mx-auto hidden lg:flex flex-row flex-wrap justify-center" style={{ maxWidth: "1270px", gap: "29px" }} >
             {[
               { img: "cleaning.png", label: "Cleaning & Restoration" },
-              { img: "renovation.png", label: "Roofing &\nContractors" },
-              { img: "landscaping.png", label: "Landscaping &\nPressure Washing" },
-              { img: "auto-dealing.png", label: "Auto Detailing" },
-              { img: "property_inspection.png", label: "Property Management" },
+              { img: "renovation.webp", label: "Roofing &\nContractors" },
+              { img: "landscaping.webp", label: "Landscaping &\nPressure Washing" },
+              { img: "auto-dealing.webp", label: "Auto Detailing" },
+              { img: "property_inspection.webp", label: "Property Management" },
             ].map((item) => (
               <div key={item.label} className="flex flex-col items-center justify-center" style={{ width: "404px", height: "289px", borderRadius: "38px", border: "1px solid rgba(0,0,0,0.5)" }}>
-                <img src={`/${item.img}`} alt={item.label} style={{ width: "121px", height: "121px" }} className="object-contain mb-4" loading="lazy" decoding="async" />
-                <span style={{ fontWeight: "500", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="whitespace-pre-line text-center text-black">{item.label}</span>
+                <img src={`/${item.img}`} alt={item.label} width="121" height="121" style={{ width: "121px", height: "121px" }} className="object-contain mb-4" loading="lazy" decoding="async" />
+                <span style={{ fontWeight: "500", fontSize: "29px", lineHeight: "35px", letterSpacing: "-0.201242px" }} className="whitespace-pre-line text-center text-black">{nl2br(item.label)}</span>
               </div>
             ))}
             <div className="flex flex-col items-center justify-center px-6" style={{ width: "404px", height: "289px", borderRadius: "38px", border: "1px solid rgba(0,0,0,0.5)" }}>
               <span style={{ fontWeight: "800", fontSize: "32px", lineHeight: "44px", letterSpacing: "-0.201242px" }} className="text-center text-black">+ Painting, HVAC,</span>
-              <span style={{ fontWeight: "800", fontSize: "32px", lineHeight: "44px", letterSpacing: "-0.201242px" }} className="text-center text-neutral-400">Plumbing, Electrical,</span>
+              <span style={{ fontWeight: "800", fontSize: "32px", lineHeight: "44px", letterSpacing: "-0.201242px" }} className="text-center text-neutral-500">Plumbing, Electrical,</span>
               <span style={{ fontWeight: "800", fontSize: "32px", lineHeight: "44px", letterSpacing: "-0.201242px" }} className="text-center text-black">Pest Control &amp; more</span>
             </div>
           </div>
@@ -773,7 +790,7 @@ function AppV2() {
                   {/* Client info */}
                   <div className="flex flex-col items-center" style={{ gap: "16px" }}>
                     <div className="overflow-hidden rounded-full bg-neutral-200" style={{ width: "56px", height: "56px" }}>
-                      <div className="flex h-full w-full items-center justify-center text-xl text-neutral-400">SK</div>
+                      <div className="flex h-full w-full items-center justify-center text-xl text-black">SK</div>
                     </div>
                     <div className="flex flex-col items-start" style={{ gap: "6px" }}>
                       <p style={{ fontWeight: "600", fontSize: "21px", lineHeight: "130%" }} className="w-full text-center text-[#111827]">Sarah K.</p>
@@ -823,7 +840,7 @@ function AppV2() {
                   {stat.value}
                 </span>
                 <span style={{ fontWeight: "400", fontSize: "29px", lineHeight: "130%" }} className="whitespace-pre-line text-center text-[#2D2D2D]">
-                  {stat.label}
+                  {nl2br(stat.label)}
                 </span>
               </div>
             ))}
@@ -929,7 +946,7 @@ function AppV2() {
                         {plan.price}
                       </span>
                       <span style={{ fontWeight: "700", fontSize: "16px", lineHeight: "160%" }} className="whitespace-pre-line text-[#3B3B3B]">
-                        {plan.period}
+                        {nl2br(plan.period)}
                       </span>
                     </div>
                     <p style={{ fontWeight: "400", fontSize: "16px", lineHeight: "160%" }} className="text-[#2D2D2D]">{plan.desc}</p>
@@ -938,7 +955,7 @@ function AppV2() {
                   <ul className="flex flex-col" style={{ gap: "14px" }}>
                     {plan.features.map((f) => (
                       <li key={f} className="flex items-start" style={{ gap: "12px" }}>
-                        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#009379]" strokeWidth={2.5} />
+                        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#007A63]" strokeWidth={2.5} />
                         <span style={{ fontWeight: "331", fontSize: "16px", lineHeight: "1.5" }} className="text-[#2D2D2D]">{f}</span>
                       </li>
                     ))}
@@ -949,7 +966,7 @@ function AppV2() {
                       fontWeight: "500",
                       fontSize: "14px",
                       lineHeight: "20px",
-                      color: "#009379",
+                      color: "#007A63",
                       textDecoration: "underline",
                       alignSelf: "flex-start",
                     }}
@@ -989,7 +1006,7 @@ function AppV2() {
           <p style={{ fontWeight: "300", letterSpacing: "-0.201242px" }} className="mb-2 text-center text-[14px] leading-[22px] text-[#555] lg:text-[18px] lg:leading-[28px] max-w-[700px] mx-auto">
             Hours back on every job. Fewer disputes. Branded reports clients trust.
           </p>
-          <p style={{ fontWeight: "300", letterSpacing: "-0.201242px" }} className="mb-10 text-center text-[13px] leading-[20px] text-[#777] lg:text-[16px] lg:leading-[24px] max-w-[600px] mx-auto">
+          <p style={{ fontWeight: "300", letterSpacing: "-0.201242px" }} className="mb-10 text-center text-[13px] leading-[20px] text-[#595959] lg:text-[16px] lg:leading-[24px] max-w-[600px] mx-auto">
             One avoided dispute or one branded report can pay for the platform.
           </p>
 
@@ -1003,7 +1020,7 @@ function AppV2() {
             ];
             const rows = [
               { icon: "/icon-time.svg", label: "Time saved", values: ["5.4 hrs", "6.4 hrs", "43 hrs", "238 hrs"], color: "#2563EB", tooltip: "Monthly hours saved vs. manually creating before/after documentation." },
-              { icon: "/icon-complaints.svg", label: "Complaints reduced", values: ["~50%", "~50%", "~50%", "~50%"], color: "#009379", tooltip: "Estimated reduction in customer complaints when visual proof is provided." },
+              { icon: "/icon-complaints.svg", label: "Complaints reduced", values: ["~50%", "~50%", "~50%", "~50%"], color: "#007A63", tooltip: "Estimated reduction in customer complaints when visual proof is provided." },
               { icon: "/icon-marketing.svg", label: "Dispute costs prevented", values: ["$50", "$50", "$400", "$2,500"], color: "#D97706", tooltip: "Monthly savings from avoided disputes, based on complaint rate and average resolution cost." },
               { icon: "/icon-disputes.svg", label: "Marketing value", values: ["$10", "$75", "$160", "$500"], color: "#7C3AED", tooltip: "Estimated monthly revenue from using job photos as marketing content." },
               { icon: "/icon-price.svg", label: "Plan price", values: ["$0", "$14.99", "$39.99", "Custom"], color: "#111", isPrice: true },
@@ -1061,8 +1078,8 @@ function AppV2() {
                             </div>
                           </td>
                           {rows.map((row) => (
-                            <td key={row.label} className="text-center py-3 px-1" style={{ borderBottom: ti < tiers.length - 1 ? "1px solid rgba(0,0,0,0.08)" : "none", fontWeight: "700", fontSize: row.isPrice ? "16px" : "14px", color: row.isPrice ? "#009379" : "#2D2D2D" }}>
-                              {row.values[ti]}{row.isPrice && <span style={{ fontWeight: "400", fontSize: "10px", color: "#888" }}>/mo</span>}
+                            <td key={row.label} className="text-center py-3 px-1" style={{ borderBottom: ti < tiers.length - 1 ? "1px solid rgba(0,0,0,0.08)" : "none", fontWeight: "700", fontSize: row.isPrice ? "16px" : "14px", color: row.isPrice ? "#007A63" : "#2D2D2D" }}>
+                              {row.values[ti]}{row.isPrice && <span style={{ fontWeight: "400", fontSize: "10px", color: "#595959" }}>/mo</span>}
                             </td>
                           ))}
                         </tr>
@@ -1070,7 +1087,7 @@ function AppV2() {
                     </tbody>
                   </table>
                   <p className="text-center mt-4 px-2">
-                    <span style={{ fontWeight: "300", fontSize: "11px", lineHeight: "1.4", color: "#888" }}>{commonNote}</span>
+                    <span style={{ fontWeight: "300", fontSize: "11px", lineHeight: "1.4", color: "#595959" }}>{commonNote}</span>
                   </p>
                 </div>
 
@@ -1093,7 +1110,7 @@ function AppV2() {
                                   <span style={{ fontWeight: "600", fontSize: "16px", lineHeight: "1.3", letterSpacing: "-0.201242px" }} className="text-black">{row.label}</span>
                                   {row.tooltip && (
                                     <div className="group relative inline-flex">
-                                      <Info className="h-3.5 w-3.5 text-[#bbb] cursor-pointer" />
+                                      <Info className="h-3.5 w-3.5 text-[#767676] cursor-pointer" />
                                       <div className="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 absolute top-6 z-50 w-[260px] p-3 bg-[#2D2D2D] text-white text-[13px] leading-[1.5] rounded-xl shadow-xl text-left" style={{ fontWeight: "350", ...(ri >= 3 ? { right: 0 } : { left: "50%", transform: "translateX(-50%)" }) }}>
                                         <span className="block mb-1 text-[11px] uppercase tracking-wider text-[#F2C31B]" style={{ fontWeight: "600" }}>How we calculated this</span>
                                         {row.tooltip}
@@ -1113,7 +1130,7 @@ function AppV2() {
                               <div className="flex items-center" style={{ gap: "8px" }}>
                                 <span style={{ fontWeight: "600", fontSize: "22px", lineHeight: "1.4", letterSpacing: "-0.201242px" }} className="text-black">{t.name}</span>
                                 <div className="group relative inline-flex">
-                                  <Info className="h-4 w-4 text-[#bbb] cursor-pointer" />
+                                  <Info className="h-4 w-4 text-[#767676] cursor-pointer" />
                                   <div className="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 absolute left-6 top-0 z-50 w-[280px] p-4 bg-[#2D2D2D] text-white text-[13px] leading-[1.6] rounded-xl shadow-xl text-left" style={{ fontWeight: "350" }}>
                                     <span className="block mb-1 text-[11px] uppercase tracking-wider text-[#F2C31B]" style={{ fontWeight: "600" }}>Methodology</span>
                                     {t.tooltip}
@@ -1122,8 +1139,8 @@ function AppV2() {
                               </div>
                             </td>
                             {rows.map((row) => (
-                              <td key={row.label} className="text-center" style={{ padding: "24px 16px", borderBottom: ti < tiers.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none", borderLeft: "1px solid rgba(0,0,0,0.1)", fontWeight: "700", fontSize: row.isPrice ? "26px" : "22px", letterSpacing: "-0.02em", color: row.isPrice ? "#009379" : "#2D2D2D" }}>
-                                {row.values[ti]}{row.isPrice && <span style={{ fontWeight: "400", fontSize: "16px", color: "#888" }}> /mo</span>}
+                              <td key={row.label} className="text-center" style={{ padding: "24px 16px", borderBottom: ti < tiers.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none", borderLeft: "1px solid rgba(0,0,0,0.1)", fontWeight: "700", fontSize: row.isPrice ? "26px" : "22px", letterSpacing: "-0.02em", color: row.isPrice ? "#007A63" : "#2D2D2D" }}>
+                                {row.values[ti]}{row.isPrice && <span style={{ fontWeight: "400", fontSize: "16px", color: "#595959" }}> /mo</span>}
                               </td>
                             ))}
                           </tr>
@@ -1132,7 +1149,7 @@ function AppV2() {
                     </table>
                   </div>
                   <p className="text-center mt-5">
-                    <span style={{ fontWeight: "300", fontSize: "14px", lineHeight: "1.4", color: "#888" }}>{commonNote}</span>
+                    <span style={{ fontWeight: "300", fontSize: "14px", lineHeight: "1.4", color: "#595959" }}>{commonNote}</span>
                   </p>
                 </div>
               </>
@@ -1209,10 +1226,10 @@ function AppV2() {
               </div>
               <div className="flex items-center" style={{ gap: "21px" }}>
                 <a href="https://play.google.com/store/apps/details?id=com.proofpix.app" target="_blank" rel="noopener noreferrer" aria-label="Get ProofPix on Google Play">
-                  <img src="playstore.png" alt="Google Play" style={{ width: "137px", height: "46px", borderRadius: "10px" }} />
+                  <img src="playstore.webp" alt="Google Play" width="137" height="45" style={{ width: "137px", height: "45px", borderRadius: "10px" }} />
                 </a>
                 <a href="https://apps.apple.com/us/app/proofpix/id6754261444" target="_blank" rel="noopener noreferrer" aria-label="Download ProofPix on the App Store">
-                  <img src="applestore.png" alt="Apple App Store" style={{ width: "137px", height: "48px", borderRadius: "10px" }} />
+                  <img src="applestore.webp" alt="Apple App Store" width="137" height="46" style={{ width: "137px", height: "46px", borderRadius: "10px" }} />
                 </a>
               </div>
             </div>
@@ -1221,7 +1238,7 @@ function AppV2() {
               <div className="absolute left-1/2" style={{ width: "215.92px", transform: "translateX(calc(-50% - 0.54px))", top: "5.77px", zIndex: 2, filter: "drop-shadow(10.39px 14.02px 19.68px rgba(0, 0, 0, 0.15))" }}>
                 <div className="relative" style={{ background: "linear-gradient(12deg, #FFFFFF 2%, #D2D2D2 56%, #FFFFFF 88%)", border: "0.55px solid #D1D1D1", borderRadius: "38.75px", padding: "6px" }}>
                   <div className="overflow-hidden" style={{ borderRadius: "33.22px", border: "0.55px solid #2D2D2D" }}>
-                    <img src="/appscreenshot.png" alt="ProofPix App" className="w-full h-auto block" loading="lazy" decoding="async" />
+                    <img src="/appscreenshot.webp" alt="ProofPix App" width="386" height="840" className="w-full h-auto block" loading="lazy" decoding="async" />
                   </div>
                   {/* Notch */}
                   <div className="absolute left-1/2 -translate-x-1/2" style={{ top: "10.52px", width: "66.52px", height: "14.39px", background: "#FFFFFF", borderRadius: "55.36px" }}>
@@ -1254,10 +1271,10 @@ function AppV2() {
               </div>
               <div className="flex items-center" style={{ gap: "21px" }}>
                 <a href="https://play.google.com/store/apps/details?id=com.proofpix.app" target="_blank" rel="noopener noreferrer" aria-label="Get ProofPix on Google Play">
-                  <img src="playstore.png" alt="Google Play" style={{ width: "215px", height: "72px", borderRadius: "19px" }} />
+                  <img src="playstore.webp" alt="Google Play" width="215" height="70" style={{ width: "215px", height: "70px", borderRadius: "19px" }} />
                 </a>
                 <a href="https://apps.apple.com/us/app/proofpix/id6754261444" target="_blank" rel="noopener noreferrer" aria-label="Download ProofPix on the App Store">
-                  <img src="applestore.png" alt="Apple App Store" style={{ width: "208px", height: "72px", borderRadius: "19px" }} />
+                  <img src="applestore.webp" alt="Apple App Store" width="208" height="69" style={{ width: "208px", height: "69px", borderRadius: "19px" }} />
                 </a>
               </div>
             </div>
@@ -1267,7 +1284,7 @@ function AppV2() {
               <div className="absolute" style={{ width: "400px", left: "167px", top: "30px", filter: "drop-shadow(19px 26px 36px rgba(0, 0, 0, 0.15))" }}>
                 <div className="relative" style={{ background: "linear-gradient(12deg, #FFFFFF 2%, #D2D2D2 56%, #FFFFFF 88%)", border: "1px solid #D1D1D1", borderRadius: "72px", padding: "11px" }}>
                   <div className="overflow-hidden" style={{ borderRadius: "62px", border: "1px solid #2D2D2D" }}>
-                    <img src="/appscreenshot.png" alt="ProofPix App" className="w-full h-auto block" loading="lazy" decoding="async" />
+                    <img src="/appscreenshot.webp" alt="ProofPix App" width="386" height="840" className="w-full h-auto block" loading="lazy" decoding="async" />
                   </div>
                   {/* Notch */}
                   <div className="absolute left-1/2 -translate-x-1/2" style={{ top: "20px", width: "123px", height: "27px", background: "#FFFFFF", borderRadius: "103px" }}>
@@ -1289,7 +1306,7 @@ function AppV2() {
             {/* Logo + description */}
             <div className="flex flex-col" style={{ gap: "25px" }}>
               <div className="flex items-center" style={{ gap: "9.31px" }}>
-                <img src="/logo.png" alt="ProofPix" style={{ height: "59.19px" }} className="w-auto" />
+                <img src="/logo.png" alt="ProofPix" width="86" height="59" style={{ height: "59.19px" }} className="w-auto" />
                 <span style={{ fontWeight: "600", fontSize: "37.4648px", lineHeight: "46px", letterSpacing: "-0.170294px" }} className="text-white">ProofPix</span>
               </div>
               <p style={{ fontSize: "17px", lineHeight: "26px", fontWeight: "500" }} className="text-white">The complete job photo platform for service businesses. Capture, organize, report, and share every job — built for field teams.</p>
@@ -1327,7 +1344,7 @@ function AppV2() {
           {/* Row 1: logo + nav links */}
           <div className="flex flex-row justify-between items-center w-full" style={{ height: "59.19px" }}>
             <div className="flex items-center" style={{ gap: "9.31px" }}>
-              <img src="/logo.png" alt="ProofPix" style={{ height: "59.19px" }} className="w-auto" />
+              <img src="/logo.png" alt="ProofPix" width="86" height="59" style={{ height: "59.19px" }} className="w-auto" />
               <span style={{ fontWeight: "600", fontSize: "37.4648px", lineHeight: "46px", letterSpacing: "-0.170294px" }} className="text-black">ProofPix</span>
             </div>
             <nav className="flex flex-row items-center" style={{ gap: "36px" }}>
