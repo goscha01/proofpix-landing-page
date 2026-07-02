@@ -20,7 +20,10 @@
     "build": "react-scripts build",
     "postbuild": "react-snap",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "bash scripts/deploy.sh",
+    "optimize:images": "node scripts/optimize-images.js",
+    "selfhost:font": "node scripts/selfhost-alexandria.js"
   },
   "reactSnap": {
     "include": [
@@ -33,7 +36,8 @@
       "--no-sandbox",
       "--disable-setuid-sandbox"
     ],
-    "skipThirdPartyRequests": true
+    "skipThirdPartyRequests": true,
+    "inlineCss": true
   },
   "eslintConfig": {
     "extends": [

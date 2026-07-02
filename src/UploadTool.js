@@ -803,10 +803,7 @@ function UploadToolSection() {
           {/* Phone frame with the real main-screen screenshot. Cut tight — under
               the first row of project photos in the screenshot — and both the
               "Try it instantly" headline and the Upload CTA float over the cut. */}
-          <div
-            className="relative"
-            style={{ width: "clamp(280px, 42vw, 380px)" }}
-          >
+          <div className="relative w-[280px] sm:w-[320px] md:w-[380px]">
             <div
               className="relative"
               style={{
