@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.proofpix.app",
+      "sha256_cert_fingerprints": [
+        "A0:1E:4C:4F:AC:0F:41:CC:35:4A:C7:56:9B:23:72:AF:4E:29:13:02:1D:15:BA:89:51:8D:F4:68:F3:DB:B8:4C"
+      ]
+    }
+  }
+]

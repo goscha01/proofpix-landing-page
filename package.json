@@ -27,7 +27,9 @@
   },
   "reactSnap": {
     "include": [
-      "/"
+      "/",
+      "/join",
+      "/connect"
     ],
     "exclude": [
       "/v2"

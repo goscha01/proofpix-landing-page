@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["X46T9F8UMA.com.proofpix.app"],
+        "components": [
+          { "/": "/join" },
+          { "/": "/connect" }
+        ]
+      }
+    ]
+  }
+}

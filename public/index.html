@@ -179,6 +179,39 @@
       ]
     }
     </script>
+
+    <!-- Deep-link shortcut for /join and /connect. Fires BEFORE React hydrates
+         so users tapping a Universal Link on a phone that failed to intercept
+         (or came in via Safari) get an immediate scheme-redirect instead of
+         seeing the marketing landing flash. If the scheme resolves to the
+         installed app, they never see this page at all. If not, React
+         hydrates the JoinRedirect / ConnectRedirect fallback UI with store
+         buttons. Placed inline in <head> to run as early as possible. -->
+    <script>
+      (function () {
+        try {
+          var p = window.location.pathname;
+          var s = window.location.search || '';
+          if (p !== '/join' && p !== '/connect') return;
+          var params = new URLSearchParams(s);
+          if (p === '/join') {
+            var invite = params.get('invite');
+            if (invite) {
+              window.location.replace('proofpix://join?invite=' + encodeURIComponent(invite));
+            }
+          } else if (p === '/connect') {
+            var token = params.get('token');
+            var workspace = params.get('workspace');
+            if (token && workspace) {
+              window.location.replace(
+                'proofpix://connect?token=' + encodeURIComponent(token) +
+                '&workspace=' + encodeURIComponent(workspace)
+              );
+            }
+          }
+        } catch (e) { /* fall through to React fallback */ }
+      })();
+    </script>
   </head>
   <body>
     <noscript>
