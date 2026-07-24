@@ -186,32 +186,71 @@
          seeing the marketing landing flash. If the scheme resolves to the
          installed app, they never see this page at all. If not, React
          hydrates the JoinRedirect / ConnectRedirect fallback UI with store
-         buttons. Placed inline in <head> to run as early as possible. -->
-    <script>
-      (function () {
-        try {
-          var p = window.location.pathname;
-          var s = window.location.search || '';
-          if (p !== '/join' && p !== '/connect') return;
-          var params = new URLSearchParams(s);
-          if (p === '/join') {
-            var invite = params.get('invite');
-            if (invite) {
-              window.location.replace('proofpix://join?invite=' + encodeURIComponent(invite));
-            }
-          } else if (p === '/connect') {
-            var token = params.get('token');
-            var workspace = params.get('workspace');
-            if (token && workspace) {
-              window.location.replace(
-                'proofpix://connect?token=' + encodeURIComponent(token) +
-                '&workspace=' + encodeURIComponent(workspace)
-              );
-            }
-          }
-        } catch (e) { /* fall through to React fallback */ }
-      })();
-    </script>
+         buttons.
+         Also paints a branded loading card into #root *before* triggering
+         the scheme redirect, so iOS's "This site is trying to open another
+         application" dialog appears over a ProofPix-branded background
+         instead of a blank grey page. -->
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body.pp-handoff {
+        background: linear-gradient(135deg, #F2C31B 0%, #E5B517 100%);
+        min-height: 100vh;
+        font-family: 'Alexandria', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      .pp-handoff-shell {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .pp-handoff-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 36px 28px;
+        max-width: 380px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        box-sizing: border-box;
+      }
+      .pp-handoff-logo {
+        width: 68px;
+        height: 68px;
+        margin: 0 auto 16px;
+        border-radius: 18px;
+        background: #F2C31B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pp-handoff-logo img { width: 46px; height: 46px; display: block; }
+      .pp-handoff-title {
+        margin: 0 0 6px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #1E1E1E;
+        letter-spacing: -0.3px;
+      }
+      .pp-handoff-sub {
+        margin: 0 0 22px;
+        font-size: 14px;
+        color: #666;
+        line-height: 1.5;
+      }
+      .pp-handoff-spinner {
+        width: 34px;
+        height: 34px;
+        border: 3px solid #F5EBBE;
+        border-top-color: #F2C31B;
+        border-radius: 50%;
+        margin: 0 auto;
+        animation: pp-handoff-spin 0.9s linear infinite;
+      }
+      @keyframes pp-handoff-spin { to { transform: rotate(360deg); } }
+    </style>
   </head>
   <body>
     <noscript>
@@ -228,5 +267,59 @@
       <p><a href="https://play.google.com/store/apps/details?id=com.proofpix.app">Get ProofPix on Google Play</a> | <a href="https://apps.apple.com/us/app/proofpix/id6754261444">Download on the App Store</a></p>
     </noscript>
     <div id="root"></div>
+    <script>
+      // Runs right after #root is parsed. Paints the branded handoff card
+      // BEFORE the scheme redirect fires so iOS's "open another application"
+      // system prompt appears over ProofPix colors instead of blank grey.
+      // React's createRoot().render() cleanly replaces this when hydrating
+      // ConnectRedirect / JoinRedirect (they aren't react-snap prerendered,
+      // so it's a client render — no hydration mismatch).
+      (function () {
+        try {
+          var p = window.location.pathname;
+          if (p !== '/join' && p !== '/connect') return;
+          document.body.className = 'pp-handoff';
+          var title = p === '/connect' ? 'Connecting Service Flow' : 'Joining your team';
+          var sub = p === '/connect'
+            ? 'Opening ProofPix to complete pairing…'
+            : 'Opening ProofPix to accept your invite…';
+          var root = document.getElementById('root');
+          if (root) {
+            root.innerHTML =
+              '<div class="pp-handoff-shell">' +
+                '<div class="pp-handoff-card">' +
+                  '<div class="pp-handoff-logo"><img src="/logo.png" alt="ProofPix" /></div>' +
+                  '<h1 class="pp-handoff-title">' + title + '</h1>' +
+                  '<p class="pp-handoff-sub">' + sub + '</p>' +
+                  '<div class="pp-handoff-spinner"></div>' +
+                '</div>' +
+              '</div>';
+          }
+
+          // Defer the scheme redirect two animation frames so the branded
+          // card paints first. Without this the sync replace() beat the
+          // first paint and iOS showed the prompt over blank grey.
+          var s = window.location.search || '';
+          var params = new URLSearchParams(s);
+          var go = null;
+          if (p === '/join') {
+            var invite = params.get('invite');
+            if (invite) go = 'proofpix://join?invite=' + encodeURIComponent(invite);
+          } else if (p === '/connect') {
+            var token = params.get('token');
+            var workspace = params.get('workspace');
+            if (token && workspace) {
+              go = 'proofpix://connect?token=' + encodeURIComponent(token) +
+                   '&workspace=' + encodeURIComponent(workspace);
+            }
+          }
+          if (go) {
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () { window.location.replace(go); });
+            });
+          }
+        } catch (e) { /* fall through to React fallback */ }
+      })();
+    </script>
   </body>
 </html>
